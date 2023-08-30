@@ -1,6 +1,12 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-  "plugins": ["prettier"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:node/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020
@@ -9,7 +15,7 @@
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
+        "endOfLine": "off"
       }
     ],
     "spaced-comment": "off",
@@ -22,10 +28,18 @@
     "no-return-await": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
-    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    "prefer-destructuring": [
+      "error",
+      {
+        "object": true,
+        "array": false
+      }
+    ],
     "no-unused-vars": [
       "error",
-      { "argsIgnorePattern": "req|res|next|val|err" }
+      {
+        "argsIgnorePattern": "req|res|next|val|err"
+      }
     ],
     "eslint-next-line": "off"
   }

@@ -1,0 +1,114 @@
+[
+    {
+        "stadium_id": 1,
+        "address": "123 Arsenal Street, London",
+        "capacity": 60361,
+        "name": "Emirates Stadium",
+        "location": "London"
+    },
+    {
+        "stadium_id": 2,
+        "address": "456 Etihad Avenue, Manchester",
+        "capacity": 55017,
+        "name": "Etihad Stadium",
+        "location": "Manchester"
+    },
+    {
+        "stadium_id": 3,
+        "address": "789 Anfield Road, Liverpool",
+        "capacity": 53291,
+        "name": "Anfield",
+        "location": "Liverpool"
+    },
+    {
+        "stadium_id": 4,
+        "address": "101 Stamford Bridge, London",
+        "capacity": 40568,
+        "name": "Stamford Bridge",
+        "location": "London"
+    },
+    {
+        "stadium_id": 5,
+        "address": "111 Bernabeu Avenue, Madrid",
+        "capacity": 81044,
+        "name": "Santiago Bernabeu",
+        "location": "Madrid"
+    },
+    {
+        "stadium_id": 6,
+        "address": "222 Camp Nou Street, Barcelona",
+        "capacity": 99354,
+        "name": "Camp Nou",
+        "location": "Barcelona"
+    },
+    {
+        "stadium_id": 7,
+        "address": "333 Allianz Arena Avenue, Munich",
+        "capacity": 75000,
+        "name": "Allianz Arena",
+        "location": "Munich"
+    },
+    {
+        "stadium_id": 8,
+        "address": "444 Parc des Princes Road, Paris",
+        "capacity": 48712,
+        "name": "Parc des Princes",
+        "location": "Paris"
+    },
+    {
+        "stadium_id": 9,
+        "address": "555 Juventus Stadium Street, Turin",
+        "capacity": 41507,
+        "name": "Allianz Stadium",
+        "location": "Turin"
+    },
+    {
+        "stadium_id": 10,
+        "address": "666 Old Trafford Road, Manchester",
+        "capacity": 74800,
+        "name": "Old Trafford",
+        "location": "Manchester"
+    },
+    {
+        "stadium_id": 11,
+        "address": "777 San Siro Avenue, Milan",
+        "capacity": 80018,
+        "name": "San Siro",
+        "location": "Milan"
+    },
+    {
+        "stadium_id": 12,
+        "address": "888 Wanda Metropolitano Road, Madrid",
+        "capacity": 67829,
+        "name": "Wanda Metropolitano",
+        "location": "Madrid"
+    },
+    {
+        "stadium_id": 13,
+        "address": "999 Signal Iduna Park Street, Dortmund",
+        "capacity": 81360,
+        "name": "Signal Iduna Park",
+        "location": "Dortmund"
+    },
+    {
+        "stadium_id": 14,
+        "address": "101 San Siro Avenue, Milan",
+        "capacity": 75633,
+        "name": "San Siro",
+        "location": "Milan"
+    },
+    {
+        "stadium_id": 15,
+        "address": "111 Tottenham Lane, London",
+        "capacity": 62810,
+        "name": "Tottenham Hotspur Stadium",
+        "location": "London"
+    },
+    {
+        "stadium_id": 16,
+        "address": "121 Diego Armando Maradona Street, Naples",
+        "capacity": 60240,
+        "name": "Stadio Diego Armando Maradona",
+        "location": "Naples"
+    }
+]
