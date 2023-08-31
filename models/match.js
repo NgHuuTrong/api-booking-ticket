@@ -1,98 +1,89 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+const _sequelize = require('sequelize');
+const sequelize = require('../utils/database');
 
-export default class match extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Match = sequelize.define(
+  'matches',
+  {
     match_id: {
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     stadium_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'stadium',
-        key: 'stadium_id'
-      }
+        model: 'stadia',
+        key: 'stadium_id',
+      },
     },
     home_club_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'club',
-        key: 'club_id'
-      }
+        model: 'clubs',
+        key: 'club_id',
+      },
     },
     away_club_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'club',
-        key: 'club_id'
-      }
+        model: 'clubs',
+        key: 'club_id',
+      },
     },
     time: {
-      type: DataTypes.DATE,
-      allowNull: true
+      type: _sequelize.DATE,
+      allowNull: true,
     },
     default_price: {
-      type: DataTypes.FLOAT,
-      allowNull: true
+      type: _sequelize.FLOAT,
+      allowNull: true,
     },
     remain_seats_north: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
+      type: _sequelize.DOUBLE,
+      allowNull: true,
     },
     remain_seats_south: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
+      type: _sequelize.DOUBLE,
+      allowNull: true,
     },
     remain_seats_west: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
+      type: _sequelize.DOUBLE,
+      allowNull: true,
     },
     remain_seats_east: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
-    }
-  }, {
-    sequelize,
-    tableName: 'match',
-    timestamps: false,
+      type: _sequelize.DOUBLE,
+      allowNull: true,
+    },
+  },
+  {
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "match_id" },
-        ]
+        using: 'BTREE',
+        fields: [{ name: 'match_id' }],
       },
       {
-        name: "stadium_id",
-        using: "BTREE",
-        fields: [
-          { name: "stadium_id" },
-        ]
+        name: 'stadium_id',
+        using: 'BTREE',
+        fields: [{ name: 'stadium_id' }],
       },
       {
-        name: "home_club_id",
-        using: "BTREE",
-        fields: [
-          { name: "home_club_id" },
-        ]
+        name: 'home_club_id',
+        using: 'BTREE',
+        fields: [{ name: 'home_club_id' }],
       },
       {
-        name: "away_club_id",
-        using: "BTREE",
-        fields: [
-          { name: "away_club_id" },
-        ]
+        name: 'away_club_id',
+        using: 'BTREE',
+        fields: [{ name: 'away_club_id' }],
       },
-    ]
-  });
-  }
-}
+    ],
+  },
+);
+
+module.exports = Match;

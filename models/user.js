@@ -1,73 +1,70 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+const _sequelize = require('sequelize');
+const sequelize = require('../utils/database');
 
-export default class user extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const User = sequelize.define(
+  'users',
+  {
     user_id: {
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING(100),
-      allowNull: false
+      type: _sequelize.STRING(100),
+      allowNull: false,
     },
     gender: {
-      type: DataTypes.ENUM('male','female'),
-      allowNull: false
+      type: _sequelize.ENUM('male', 'female'),
+      allowNull: false,
     },
     phone: {
-      type: DataTypes.STRING(12),
-      allowNull: true
+      type: _sequelize.STRING(12),
+      allowNull: true,
     },
     email: {
-      type: DataTypes.STRING(100),
-      allowNull: true
+      type: _sequelize.STRING(100),
+      allowNull: true,
     },
     password: {
-      type: DataTypes.STRING(100),
-      allowNull: true
+      type: _sequelize.STRING(100),
+      allowNull: true,
     },
     password_confirm: {
-      type: DataTypes.STRING(100),
-      allowNull: true
+      type: _sequelize.STRING(100),
+      allowNull: true,
     },
     change_password_at: {
-      type: DataTypes.DATE,
-      allowNull: true
+      type: _sequelize.DATE,
+      allowNull: true,
     },
     address: {
-      type: DataTypes.STRING(200),
-      allowNull: true
+      type: _sequelize.STRING(200),
+      allowNull: true,
     },
     role: {
-      type: DataTypes.STRING(10),
-      allowNull: true
+      type: _sequelize.STRING(10),
+      allowNull: true,
     },
     active: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
+      type: _sequelize.BOOLEAN,
+      allowNull: true,
     },
     avatar: {
-      type: DataTypes.STRING(300),
-      allowNull: true
-    }
-  }, {
-    sequelize,
-    tableName: 'user',
-    timestamps: false,
+      type: _sequelize.STRING(300),
+      allowNull: true,
+    },
+  },
+  {
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "user_id" },
-        ]
+        using: 'BTREE',
+        fields: [{ name: 'user_id' }],
       },
-    ]
-  });
-  }
-}
+    ],
+  },
+);
+
+module.exports = User;

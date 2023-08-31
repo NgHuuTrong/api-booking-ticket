@@ -1,41 +1,36 @@
 const _sequelize = require('sequelize');
 const sequelize = require('../utils/database');
 
-const Club = sequelize.define(
-  'clubs',
+const GroupClub = sequelize.define(
+  'group_clubs',
   {
     club_id: {
-      autoIncrement: true,
       type: _sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
+      references: {
+        model: 'clubs',
+        key: 'club_id',
+      },
     },
-    name: {
-      type: _sequelize.STRING(100),
-      allowNull: true,
-    },
-    stadium_id: {
+    group_id: {
       type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'stadia',
-        key: 'stadium_id',
+        model: 'groups',
+        key: 'group_id',
       },
     },
-    city: {
-      type: _sequelize.STRING(50),
+    wins: {
+      type: _sequelize.INTEGER,
       allowNull: true,
     },
-    description: {
-      type: _sequelize.STRING(300),
+    draws: {
+      type: _sequelize.INTEGER,
       allowNull: true,
     },
-    manager_name: {
-      type: _sequelize.STRING(100),
-      allowNull: true,
-    },
-    logo: {
-      type: _sequelize.STRING(300),
+    points: {
+      type: _sequelize.INTEGER,
       allowNull: true,
     },
   },
@@ -48,12 +43,12 @@ const Club = sequelize.define(
         fields: [{ name: 'club_id' }],
       },
       {
-        name: 'stadium_id',
+        name: 'group_id',
         using: 'BTREE',
-        fields: [{ name: 'stadium_id' }],
+        fields: [{ name: 'group_id' }],
       },
     ],
   },
 );
 
-module.exports = Club;
+module.exports = GroupClub;

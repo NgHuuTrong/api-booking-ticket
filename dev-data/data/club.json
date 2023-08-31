@@ -1,0 +1,146 @@
+[
+  {
+    "club_id": 1,
+    "name": "Arsenal",
+    "stadium_id": 1,
+    "city": "London",
+    "manager_name": "Unai Emery",
+    "logo": null,
+    "description": "Arsenal Football Club is a professional football club based in London, England."
+  },
+  {
+    "club_id": 2,
+    "name": "Manchester City",
+    "stadium_id": 2,
+    "city": "Manchester",
+    "manager_name": "Pep Guardiola",
+    "logo": null,
+    "description": "Manchester City Football Club is a professional football club based in Manchester, England."
+  },
+  {
+    "club_id": 3,
+    "name": "Liverpool",
+    "stadium_id": 3,
+    "city": "Liverpool",
+    "manager_name": "Jurgen Klopp",
+    "logo": null,
+    "description": "Liverpool Football Club is a professional football club based in Liverpool, England."
+  },
+  {
+    "club_id": 4,
+    "name": "Chelsea",
+    "stadium_id": 4,
+    "city": "London",
+    "manager_name": "Frank Lampard",
+    "logo": null,
+    "description": "Chelsea Football Club is a professional football club based in London, England."
+  },
+  {
+    "club_id": 5,
+    "name": "Real Madrid",
+    "stadium_id": 5,
+    "city": "Madrid",
+    "manager_name": "Zinedine Zidane",
+    "logo": null,
+    "description": "Real Madrid Club de Fútbol is a professional football club based in Madrid, Spain."
+  },
+  {
+    "club_id": 6,
+    "name": "Barcelona",
+    "stadium_id": 6,
+    "city": "Barcelona",
+    "manager_name": "Ernesto Valverde",
+    "logo": null,
+    "description": "Futbol Club Barcelona, commonly referred to as Barcelona, is a professional football club based in Barcelona, Spain."
+  },
+  {
+    "club_id": 7,
+    "name": "Bayern Munich",
+    "stadium_id": 7,
+    "city": "Munich",
+    "manager_name": "Niko Kovac",
+    "logo": null,
+    "description": "Fußball-Club Bayern München e.V., commonly referred to as Bayern Munich, is a professional football club based in Munich, Germany."
+  },
+  {
+    "club_id": 8,
+    "name": "Paris Saint-Germain",
+    "stadium_id": 8,
+    "city": "Paris",
+    "manager_name": "Thomas Tuchel",
+    "logo": null,
+    "description": "Paris Saint-Germain Football Club is a professional football club based in Paris, France."
+  },
+  {
+    "club_id": 9,
+    "name": "Juventus",
+    "stadium_id": 9,
+    "city": "Turin",
+    "manager_name": "Maurizio Sarri",
+    "logo": null,
+    "description": "Juventus Football Club is a professional football club based in Turin, Italy."
+  },
+  {
+    "club_id": 10,
+    "name": "Manchester United",
+    "stadium_id": 10,
+    "city": "Manchester",
+    "manager_name": "Ole Gunnar Solskjær",
+    "logo": null,
+    "description": "Manchester United Football Club is a professional football club based in Manchester, England."
+  },
+  {
+    "club_id": 11,
+    "name": "AC Milan",
+    "stadium_id": 11,
+    "city": "Milan",
+    "manager_name": "Stefano Pioli",
+    "logo": null,
+    "description": "Associazione Calcio Milan, commonly referred to as AC Milan, is a professional football club based in Milan, Italy."
+  },
+  {
+    "club_id": 12,
+    "name": "Atletico Madrid",
+    "stadium_id": 12,
+    "city": "Madrid",
+    "manager_name": "Diego Simeone",
+    "logo": null,
+    "description": "Club Atlético de Madrid, commonly referred to as Atletico Madrid, is a professional football club based in Madrid, Spain."
+  },
+  {
+    "club_id": 13,
+    "name": "Borussia Dortmund",
+    "stadium_id": 13,
+    "city": "Dortmund",
+    "manager_name": "Lucien Favre",
+    "logo": null,
+    "description": "Ballspielverein Borussia 1909 e.V. Dortmund, commonly referred to as Borussia Dortmund, is a professional football club based in Dortmund, Germany."
+  },
+  {
+    "club_id": 14,
+    "name": "Tottenham Hotspur",
+    "stadium_id": 15,
+    "city": "London",
+    "manager_name": "Mauricio Pochettino",
+    "logo": null,
+    "description": "Tottenham Hotspur Football Club is a professional football club based in London, England."
+  },
+  {
+    "club_id": 15,
+    "name": "Napoli",
+    "stadium_id": 16,
+    "city": "Naples",
+    "manager_name": "Carlo Ancelotti",
+    "logo": null,
+    "description": "Società Sportiva Calcio Napoli, commonly referred to as Napoli, is a professional football club based in Naples, Italy."
+  },
+  {
+    "club_id": 16,
+    "name": "Inter Milan",
+    "stadium_id": 11,
+    "city": "Milan",
+    "manager_name": "Antonio Conte",
+    "logo": null,
+    "description": "Football Club Internazionale Milano, commonly referred to as Inter Milan, is a professional football club based in Milan, Italy."
+  }
+]

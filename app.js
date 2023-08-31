@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
+const stadiumRouter = require('./routes/stadiumRoutes');
 const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json({ limit: '10kb' }));
 
 // ROUTES: import from external files
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/stadiums', stadiumRouter);
 
 app.all('*', (req, res, next) => {
   next(new Error(`Can't find ${req.originalUrl} in this server!`));

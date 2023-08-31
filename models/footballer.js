@@ -1,72 +1,78 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+const _sequelize = require('sequelize');
+const sequelize = require('../utils/database');
 
-export default class footballer extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Footballer = sequelize.define(
+  'footballers',
+  {
     footballer_id: {
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING(100),
-      allowNull: false
+      type: _sequelize.STRING(100),
+      allowNull: false,
     },
     club_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'club',
-        key: 'club_id'
-      }
+        model: 'clubs',
+        key: 'club_id',
+      },
     },
     number: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: _sequelize.INTEGER,
+      allowNull: true,
     },
     birthdate: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
+      type: _sequelize.DATEONLY,
+      allowNull: true,
     },
     injured: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
+      type: _sequelize.BOOLEAN,
+      allowNull: true,
     },
     gender: {
-      type: DataTypes.ENUM('male','female'),
-      allowNull: false
+      type: _sequelize.ENUM('male', 'female'),
+      allowNull: false,
     },
     captain: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
+      type: _sequelize.BOOLEAN,
+      allowNull: true,
     },
     position: {
-      type: DataTypes.ENUM('ST','RW','LW','AM','CM','CDM','LB','CB','RB','GK'),
-      allowNull: false
-    }
-  }, {
-    sequelize,
-    tableName: 'footballer',
-    timestamps: false,
+      type: _sequelize.ENUM(
+        'ST',
+        'RW',
+        'LW',
+        'AM',
+        'CM',
+        'CDM',
+        'LB',
+        'CB',
+        'RB',
+        'GK',
+      ),
+      allowNull: false,
+    },
+  },
+  {
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "footballer_id" },
-        ]
+        using: 'BTREE',
+        fields: [{ name: 'footballer_id' }],
       },
       {
-        name: "club_id",
-        using: "BTREE",
-        fields: [
-          { name: "club_id" },
-        ]
+        name: 'club_id',
+        using: 'BTREE',
+        fields: [{ name: 'club_id' }],
       },
-    ]
-  });
-  }
-}
+    ],
+  },
+);
+
+module.exports = Footballer;

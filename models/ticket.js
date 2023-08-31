@@ -1,83 +1,76 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
+const _sequelize = require('sequelize');
+const sequelize = require('../utils/database');
 
-export default class ticket extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Ticket = sequelize.define(
+  'tickets',
+  {
     ticket_id: {
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'user',
-        key: 'user_id'
-      }
+        model: 'users',
+        key: 'user_id',
+      },
     },
     match_id: {
-      type: DataTypes.INTEGER,
+      type: _sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'match',
-        key: 'match_id'
-      }
+        model: 'matches',
+        key: 'match_id',
+      },
     },
     area: {
-      type: DataTypes.STRING(10),
-      allowNull: true
+      type: _sequelize.STRING(10),
+      allowNull: true,
     },
     seat: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
+      type: _sequelize.DOUBLE,
+      allowNull: true,
     },
     price: {
-      type: DataTypes.FLOAT,
-      allowNull: true
+      type: _sequelize.FLOAT,
+      allowNull: true,
     },
     code: {
-      type: DataTypes.STRING(20),
-      allowNull: true
+      type: _sequelize.STRING(20),
+      allowNull: true,
     },
     order_time: {
-      type: DataTypes.DATE,
-      allowNull: true
+      type: _sequelize.DATE,
+      allowNull: true,
     },
     expired: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    }
-  }, {
-    sequelize,
-    tableName: 'ticket',
-    timestamps: false,
+      type: _sequelize.BOOLEAN,
+      allowNull: true,
+    },
+  },
+  {
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "ticket_id" },
-        ]
+        using: 'BTREE',
+        fields: [{ name: 'ticket_id' }],
       },
       {
-        name: "user_id",
-        using: "BTREE",
-        fields: [
-          { name: "user_id" },
-        ]
+        name: 'user_id',
+        using: 'BTREE',
+        fields: [{ name: 'user_id' }],
       },
       {
-        name: "match_id",
-        using: "BTREE",
-        fields: [
-          { name: "match_id" },
-        ]
+        name: 'match_id',
+        using: 'BTREE',
+        fields: [{ name: 'match_id' }],
       },
-    ]
-  });
-  }
-}
+    ],
+  },
+);
+
+module.exports = Ticket;

@@ -1,29 +1,21 @@
 const _sequelize = require('sequelize');
 const sequelize = require('../utils/database');
 
-const Stadium = sequelize.define(
-  'stadia',
+const Group = sequelize.define(
+  'groups',
   {
-    stadium_id: {
+    group_id: {
       autoIncrement: true,
       type: _sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    address: {
-      type: _sequelize.STRING(200),
+    group_name: {
+      type: _sequelize.STRING(1),
       allowNull: true,
     },
-    capacity: {
-      type: _sequelize.DOUBLE,
-      allowNull: true,
-    },
-    name: {
-      type: _sequelize.STRING(100),
-      allowNull: true,
-    },
-    location: {
-      type: _sequelize.STRING(100),
+    rounds: {
+      type: _sequelize.INTEGER,
       allowNull: true,
     },
   },
@@ -33,10 +25,10 @@ const Stadium = sequelize.define(
         name: 'PRIMARY',
         unique: true,
         using: 'BTREE',
-        fields: [{ name: 'stadium_id' }],
+        fields: [{ name: 'group_id' }],
       },
     ],
   },
 );
 
-module.exports = Stadium;
+module.exports = Group;
