@@ -15,23 +15,46 @@ const Match = require('../../models/match.js');
 const Ticket = require('../../models/ticket.js');
 const User = require('../../models/user.js');
 
+Footballer.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
+Club.hasMany(Footballer, { as: 'footballers', foreignKey: 'club_id' });
+GroupClub.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
+Club.hasOne(GroupClub, {
+  as: 'group_club',
+  foreignKey: 'club_id',
+});
+Match.belongsTo(Club, { as: 'home_club', foreignKey: 'home_club_id' });
+Club.hasMany(Match, { as: 'matches', foreignKey: 'home_club_id' });
+Match.belongsTo(Club, { as: 'away_club', foreignKey: 'away_club_id' });
+Club.hasMany(Match, { as: 'away_club_matches', foreignKey: 'away_club_id' });
+GroupClub.belongsTo(Group, {
+  as: 'group',
+  foreignKey: 'group_id',
+});
+Group.hasMany(GroupClub, {
+  as: 'group_clubs',
+  foreignKey: 'group_id',
+});
+Ticket.belongsTo(Match, { as: 'match', foreignKey: 'match_id' });
+Match.hasMany(Ticket, { as: 'tickets', foreignKey: 'match_id' });
+Club.belongsTo(Stadium, { as: 'stadium', foreignKey: 'stadium_id' });
+Stadium.hasMany(Club, { as: 'clubs', foreignKey: 'stadium_id' });
+Match.belongsTo(Stadium, { as: 'stadium', foreignKey: 'stadium_id' });
+Stadium.hasMany(Match, { as: 'matches', foreignKey: 'stadium_id' });
+Ticket.belongsTo(User, { as: 'U', foreignKey: 'user_id' });
+User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
+
 // const models = initModels(sequelize);
 
 sequelize
   .sync()
   .then(() => {
-    // const stadiums = JSON.parse(fs.readFileSync(`${__dirname}/stadium.json`));
+    const stadiums = JSON.parse(fs.readFileSync(`${__dirname}/stadium.json`));
     const clubs = JSON.parse(fs.readFileSync(`${__dirname}/club.json`));
 
     const importData = async () => {
       try {
-        await Stadium.create({
-          stadium_id: 1,
-          address: '123 Arsenal Street, London',
-          capacity: 60361,
-          name: 'Emirates Stadium',
-          location: 'London',
-        });
+        await Stadium.bulkCreate(stadiums);
+        await Club.bulkCreate(clubs);
         console.log('Data imported successfully');
       } catch (err) {
         console.log(err);

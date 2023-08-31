@@ -34,9 +34,17 @@ const Footballer = sequelize.define(
       type: _sequelize.BOOLEAN,
       allowNull: true,
     },
-    gender: {
-      type: _sequelize.ENUM('male', 'female'),
-      allowNull: false,
+    appearance: {
+      type: _sequelize.INTEGER,
+      allowNull: true,
+    },
+    nationality: {
+      type: _sequelize.STRING(50),
+      allowNull: true,
+    },
+    image_nationality: {
+      type: _sequelize.STRING(100),
+      allowNull: true,
     },
     captain: {
       type: _sequelize.BOOLEAN,
