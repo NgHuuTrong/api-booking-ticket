@@ -46,15 +46,19 @@ User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
 // const models = initModels(sequelize);
 
 sequelize
-  .sync()
+  .sync({ force: true })
   .then(() => {
     const stadiums = JSON.parse(fs.readFileSync(`${__dirname}/stadium.json`));
     const clubs = JSON.parse(fs.readFileSync(`${__dirname}/club.json`));
+    const footballers = JSON.parse(
+      fs.readFileSync(`${__dirname}/footballers.json`),
+    );
 
     const importData = async () => {
       try {
         await Stadium.bulkCreate(stadiums);
         await Club.bulkCreate(clubs);
+        await Footballer.bulkCreate(footballers);
         console.log('Data imported successfully');
       } catch (err) {
         console.log(err);

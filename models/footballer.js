@@ -38,6 +38,18 @@ const Footballer = sequelize.define(
       type: _sequelize.INTEGER,
       allowNull: true,
     },
+    weight: {
+      type: _sequelize.STRING(10),
+      allowNull: true,
+    },
+    height: {
+      type: _sequelize.STRING(10),
+      allowNull: true,
+    },
+    photo: {
+      type: _sequelize.STRING(100),
+      allowNull: true,
+    },
     nationality: {
       type: _sequelize.STRING(50),
       allowNull: true,
@@ -51,18 +63,7 @@ const Footballer = sequelize.define(
       allowNull: true,
     },
     position: {
-      type: _sequelize.ENUM(
-        'ST',
-        'RW',
-        'LW',
-        'AM',
-        'CM',
-        'CDM',
-        'LB',
-        'CB',
-        'RB',
-        'GK',
-      ),
+      type: _sequelize.ENUM('Goalkeeper', 'Defender', 'Midfielder', 'Attacker'),
       allowNull: false,
     },
   },

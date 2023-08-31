@@ -14,7 +14,7 @@ const Group = sequelize.define(
       type: _sequelize.STRING(1),
       allowNull: true,
     },
-    rounds: {
+    season: {
       type: _sequelize.INTEGER,
       allowNull: true,
     },
