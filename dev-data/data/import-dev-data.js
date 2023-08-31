@@ -2,7 +2,7 @@
 import { Sequelize } from 'sequelize';
 import { config } from 'dotenv';
 import { readFileSync } from 'fs';
-import Stadium from '../../models/stadium.js';
+// import Stadium from '../../models/stadium.js';
 
 config({ path: '../../config.env' });
 
@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
 
 sequelize.sync();
 
-// const models = initModels(sequelize);
+const models = initModels(sequelize);
 
 const stadiums = JSON.parse(readFileSync(`${__dirname}/stadium.json`));
 // const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`));
@@ -27,7 +27,7 @@ const stadiums = JSON.parse(readFileSync(`${__dirname}/stadium.json`));
 
 const importData = async () => {
     try {
-        await Stadium.create({
+        await models.stadium.create({
             stadium_id: 1,
             address: "123 Arsenal Street, London",
             capacity: 60361,
