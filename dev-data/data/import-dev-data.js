@@ -14,6 +14,7 @@ const GroupClub = require('../../models/groupClub.js');
 const Match = require('../../models/match.js');
 const Ticket = require('../../models/ticket.js');
 const User = require('../../models/user.js');
+const News = require('../../models/news.js');
 
 Footballer.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
 Club.hasMany(Footballer, { as: 'footballers', foreignKey: 'club_id' });
@@ -48,10 +49,17 @@ User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
 sequelize
     .sync({ force: true })
     .then(() => {
-        const stadiums = JSON.parse(fs.readFileSync(`${__dirname}/stadium.json`));
-        const clubs = JSON.parse(fs.readFileSync(`${__dirname}/club.json`));
+        const stadiums = JSON.parse(
+            fs.readFileSync(`${__dirname}/stadium.json`)
+        );
+        const clubs = JSON.parse(
+            fs.readFileSync(`${__dirname}/club.json`)
+        );
         const footballers = JSON.parse(
             fs.readFileSync(`${__dirname}/footballers.json`),
+        );
+        const news = JSON.parse(
+            fs.readFileSync(`${__dirname}/news.json`),
         );
 
         const importData = async () => {
@@ -59,6 +67,7 @@ sequelize
                 await Stadium.bulkCreate(stadiums);
                 await Club.bulkCreate(clubs);
                 await Footballer.bulkCreate(footballers);
+                await News.bulkCreate(news);
                 console.log('Data imported successfully');
             } catch (err) {
                 console.log(err);

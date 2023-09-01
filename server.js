@@ -21,6 +21,7 @@ const GroupClub = require('./models/groupClub.js');
 const Match = require('./models/match.js');
 const Ticket = require('./models/ticket.js');
 const User = require('./models/user.js');
+const News = require('./models/news.js');
 
 Footballer.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
 Club.hasMany(Footballer, { as: 'footballers', foreignKey: 'club_id' });
@@ -51,8 +52,8 @@ Ticket.belongsTo(User, { as: 'U', foreignKey: 'user_id' });
 User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
 
 sequelize
-  // .sync({ force: true })
-  .sync()
+  .sync({ force: true })
+  //.sync()
   .then(() => {
     const port = process.env.PORT || 3000;
     app.listen(port, () => {

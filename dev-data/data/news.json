@@ -1,0 +1,37 @@
+[
+    {
+        "new_id": 1,
+        "title": "Erling Haaland wins UEFA Men's Player of the Year award",
+        "thumbnail": "https://editorial.uefa.com/resources/0284-18de529caef6-57a7a4865790-1000/format/wide1/mpoty_winner.jpeg",
+        "url": "https://www.uefa.com/uefachampionsleague/news/0284-18de529caef8-f362cf4716f7-1000--men-s-player-of-the-year-erling-haaland",
+        "type": "article"
+    },
+    {
+        "new_id": 2,
+        "title": "Champions League group stage draw: Bayern vs Man United, Napoli vs Real Madrid",
+        "thumbnail": "https://editorial.uefa.com/resources/0284-18de4e224768-0fdb9474468e-1000/format/wide1/fbl-eur-c1-draw.jpeg",
+        "url": "https://www.uefa.com/uefachampionsleague/news/0284-18de4e22476b-4b75a3318d8f-1000--champions-league-group-stage-draw-bayern-vs-man-united-n",
+        "type": "article"
+    },
+    {
+        "new_id": 3,
+        "title": "HIGHLIGHTS: MAN CITY - INTER",
+        "thumbnail": "https://i.ytimg.com/vi/AXEG_lagq9E/maxresdefault.jpg",
+        "url": "https://youtu.be/xiPejNMLFvE",
+        "type": "video"
+    },
+    {
+        "new_id": 4,
+        "title": "HIGHLIGHTS: LIVERPOOL - REAL MADRID",
+        "thumbnail": "https://i.ytimg.com/vi/MFT6IZ2Ikbk/maxresdefault.jpg",
+        "url": "https://youtu.be/MFT6IZ2Ikbk",
+        "type": "video"
+    },
+    {
+        "new_id": 5,
+        "title": "HIGHLIGHTS: REAL MADRID - PSG",
+        "thumbnail": "https://i.ytimg.com/vi/h_7YTz4BXlA/maxresdefault.jpg",
+        "url": "https://youtu.be/aytOhsLP2bg",
+        "type": "video"
+    }
+]
