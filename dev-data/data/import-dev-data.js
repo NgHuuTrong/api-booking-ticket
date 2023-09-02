@@ -20,20 +20,20 @@ Footballer.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
 Club.hasMany(Footballer, { as: 'footballers', foreignKey: 'club_id' });
 GroupClub.belongsTo(Club, { as: 'club', foreignKey: 'club_id' });
 Club.hasOne(GroupClub, {
-    as: 'group_club',
-    foreignKey: 'club_id',
+  as: 'group_club',
+  foreignKey: 'club_id',
 });
 Match.belongsTo(Club, { as: 'home_club', foreignKey: 'home_club_id' });
 Club.hasMany(Match, { as: 'matches', foreignKey: 'home_club_id' });
 Match.belongsTo(Club, { as: 'away_club', foreignKey: 'away_club_id' });
 Club.hasMany(Match, { as: 'away_club_matches', foreignKey: 'away_club_id' });
 GroupClub.belongsTo(Group, {
-    as: 'group',
-    foreignKey: 'group_id',
+  as: 'group',
+  foreignKey: 'group_id',
 });
 Group.hasMany(GroupClub, {
-    as: 'group_clubs',
-    foreignKey: 'group_id',
+  as: 'group_clubs',
+  foreignKey: 'group_id',
 });
 Ticket.belongsTo(Match, { as: 'match', foreignKey: 'match_id' });
 Match.hasMany(Ticket, { as: 'tickets', foreignKey: 'match_id' });
@@ -47,53 +47,60 @@ User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
 // const models = initModels(sequelize);
 
 sequelize
-    .sync({ force: true })
-    .then(() => {
-        const stadiums = JSON.parse(
-            fs.readFileSync(`${__dirname}/stadium.json`)
-        );
-        const clubs = JSON.parse(
-            fs.readFileSync(`${__dirname}/club.json`)
-        );
-        const footballers = JSON.parse(
-            fs.readFileSync(`${__dirname}/footballers.json`),
-        );
-        const news = JSON.parse(
-            fs.readFileSync(`${__dirname}/news.json`),
-        );
+  .sync({ force: true })
+  .then(() => {
+    const stadiums = JSON.parse(fs.readFileSync(`${__dirname}/stadium.json`));
+    const clubs = JSON.parse(fs.readFileSync(`${__dirname}/club.json`));
+    const footballers = JSON.parse(
+      fs.readFileSync(`${__dirname}/footballers.json`),
+    );
+    const groups = JSON.parse(fs.readFileSync(`${__dirname}/group.json`));
+    const groupClub = JSON.parse(
+      fs.readFileSync(`${__dirname}/groupClub.json`),
+    );
+    const matches = JSON.parse(fs.readFileSync(`${__dirname}/match.json`));
+    const users = JSON.parse(fs.readFileSync(`${__dirname}/user.json`));
+    // const groups = JSON.parse(fs.readFileSync(`${__dirname}/group.json`));
 
-        const importData = async () => {
-            try {
-                await Stadium.bulkCreate(stadiums);
-                await Club.bulkCreate(clubs);
-                await Footballer.bulkCreate(footballers);
-                await News.bulkCreate(news);
-                console.log('Data imported successfully');
-            } catch (err) {
-                console.log(err);
-            }
-            process.exit();
-        };
+    const news = JSON.parse(fs.readFileSync(`${__dirname}/news.json`));
 
-        const deleteData = async () => {
-            try {
-                // await Tour.deleteMany();
-                // await User.deleteMany();
-                // await Review.deleteMany();
-                console.log('Data deleted successfully');
-            } catch (err) {
-                console.log(err);
-            }
-            process.exit();
-        };
+    const importData = async () => {
+      try {
+        await Stadium.bulkCreate(stadiums);
+        await Club.bulkCreate(clubs);
+        await Footballer.bulkCreate(footballers);
+        await Group.bulkCreate(groups);
+        await GroupClub.bulkCreate(groupClub);
+        await Match.bulkCreate(matches);
+        await User.bulkCreate(users);
 
-        if (process.argv[2] === '--import') {
-            importData();
-        } else if (process.argv[2] === '--delete') {
-            deleteData();
-        }
-    })
-    .catch((err) => console.log(err));
+        await News.bulkCreate(news);
+        console.log('Data imported successfully');
+      } catch (err) {
+        console.log(err);
+      }
+      process.exit();
+    };
+
+    const deleteData = async () => {
+      try {
+        // await Tour.deleteMany();
+        // await User.deleteMany();
+        // await Review.deleteMany();
+        console.log('Data deleted successfully');
+      } catch (err) {
+        console.log(err);
+      }
+      process.exit();
+    };
+
+    if (process.argv[2] === '--import') {
+      importData();
+    } else if (process.argv[2] === '--delete') {
+      deleteData();
+    }
+  })
+  .catch((err) => console.log(err));
 
 // const models = initModels(sequelize);
 

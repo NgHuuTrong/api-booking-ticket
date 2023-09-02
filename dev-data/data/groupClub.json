@@ -1,0 +1,130 @@
+[
+  {
+    "club_id": 49,
+    "group_id": 1,
+    "wins": 1,
+    "draws": 2,
+    "loses": 0,
+    "points": 5
+  },
+  {
+    "club_id": 157,
+    "group_id": 1,
+    "wins": 2,
+    "draws": 0,
+    "loses": 1,
+    "points": 6
+  },
+  {
+    "club_id": 50,
+    "group_id": 1,
+    "wins": 0,
+    "draws": 2,
+    "loses": 1,
+    "points": 2
+  },
+  {
+    "club_id": 529,
+    "group_id": 1,
+    "wins": 0,
+    "draws": 2,
+    "loses": 1,
+    "points": 2
+  },
+  {
+    "club_id": 496,
+    "group_id": 2,
+    "wins": 0,
+    "draws": 1,
+    "loses": 2,
+    "points": 1
+  },
+  {
+    "club_id": 541,
+    "group_id": 2,
+    "wins": 2,
+    "draws": 1,
+    "loses": 0,
+    "points": 7
+  },
+  {
+    "club_id": 165,
+    "group_id": 2,
+    "wins": 1,
+    "draws": 1,
+    "loses": 1,
+    "points": 4
+  },
+  {
+    "club_id": 42,
+    "group_id": 2,
+    "wins": 0,
+    "draws": 3,
+    "loses": 0,
+    "points": 3
+  },
+  {
+    "club_id": 489,
+    "group_id": 3,
+    "wins": 0,
+    "draws": 1,
+    "loses": 2,
+    "points": 1
+  },
+  {
+    "club_id": 33,
+    "group_id": 3,
+    "wins": 1,
+    "draws": 1,
+    "loses": 1,
+    "points": 4
+  },
+  {
+    "club_id": 40,
+    "group_id": 3,
+    "wins": 3,
+    "draws": 0,
+    "loses": 0,
+    "points": 9
+  },
+  {
+    "club_id": 492,
+    "group_id": 3,
+    "wins": 0,
+    "draws": 2,
+    "loses": 1,
+    "points": 2
+  },
+  {
+    "club_id": 505,
+    "group_id": 4,
+    "wins": 1,
+    "draws": 1,
+    "loses": 1,
+    "points": 4
+  },
+  {
+    "club_id": 530,
+    "group_id": 4,
+    "wins": 3,
+    "draws": 0,
+    "loses": 0,
+    "points": 9
+  },
+  {
+    "club_id": 85,
+    "group_id": 4,
+    "wins": 1,
+    "draws": 0,
+    "loses": 2,
+    "points": 3
+  },
+  {
+    "club_id": 47,
+    "group_id": 4,
+    "wins": 0,
+    "draws": 1,
+    "loses": 2,
+    "points": 1
+  }
+]
