@@ -26,8 +26,13 @@ const Stadium = sequelize.define(
       type: _sequelize.STRING(100),
       allowNull: true,
     },
+    image: {
+      type: _sequelize.STRING(100),
+      allowNull: true,
+    },
   },
   {
+    timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',

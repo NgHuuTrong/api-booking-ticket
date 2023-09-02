@@ -58,8 +58,18 @@ const Match = sequelize.define(
       type: _sequelize.DOUBLE,
       allowNull: true,
     },
+    happened: {
+      type: _sequelize.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+    },
+    result: {
+      type: _sequelize.STRING(10),
+      allowNull: true,
+    },
   },
   {
+    timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',

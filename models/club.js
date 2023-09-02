@@ -12,7 +12,8 @@ const Club = sequelize.define(
     },
     name: {
       type: _sequelize.STRING(100),
-      allowNull: true,
+      allowNull: false,
+      unique: true,
     },
     stadium_id: {
       type: _sequelize.INTEGER,
@@ -40,6 +41,7 @@ const Club = sequelize.define(
     },
   },
   {
+    timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',

@@ -20,6 +20,7 @@ const Group = sequelize.define(
     },
   },
   {
+    timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',

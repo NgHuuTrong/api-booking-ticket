@@ -35,6 +35,7 @@ const GroupClub = sequelize.define(
     },
   },
   {
+    timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',

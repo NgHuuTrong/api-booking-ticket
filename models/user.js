@@ -15,8 +15,9 @@ const User = sequelize.define(
       allowNull: false,
     },
     gender: {
-      type: _sequelize.ENUM('male', 'female'),
+      type: _sequelize.ENUM('male', 'female', 'other'),
       allowNull: false,
+      defaultValue: 'male',
     },
     phone: {
       type: _sequelize.STRING(12),
@@ -24,18 +25,53 @@ const User = sequelize.define(
     },
     email: {
       type: _sequelize.STRING(100),
-      allowNull: true,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: {
+          msg: 'Must be an EMAIL ##CUSTOM MESSAGE##',
+        },
+      },
     },
     password: {
-      type: _sequelize.STRING(100),
-      allowNull: true,
+      type: _sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Please provide password',
+        },
+        is: {
+          args: ['^[0-9a-f]{64}$', 'i'],
+          msg: 'Password contains invalid characters',
+        },
+        len: {
+          args: [8, 32],
+          msg: 'Password must have in range [8, 32]',
+        },
+      },
     },
     password_confirm: {
-      type: _sequelize.STRING(100),
+      type: _sequelize.STRING,
       allowNull: true,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Please confirm your password',
+        },
+        checkSame() {},
+      },
     },
     change_password_at: {
       type: _sequelize.DATE,
+      allowNull: true,
+    },
+    passwordResetToken: {
+      type: _sequelize.STRING,
+      allowNull: true,
+    },
+    passwordResetExpires: {
+      type: _sequelize.STRING,
       allowNull: true,
     },
     address: {
@@ -43,19 +79,28 @@ const User = sequelize.define(
       allowNull: true,
     },
     role: {
-      type: _sequelize.STRING(10),
+      type: _sequelize.ENUM('user', 'admin'),
       allowNull: true,
+      defaultValue: 'user',
     },
     active: {
       type: _sequelize.BOOLEAN,
       allowNull: true,
+      defaultValue: true,
     },
-    avatar: {
-      type: _sequelize.STRING(300),
+    photo: {
+      type: _sequelize.STRING(200),
       allowNull: true,
     },
   },
   {
+    validate: {
+      checkPasswordSame() {
+        if (this.password !== this.password_confirm) {
+          throw new Error('Passwords are not the same!');
+        }
+      },
+    },
     indexes: [
       {
         name: 'PRIMARY',

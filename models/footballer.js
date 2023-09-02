@@ -70,6 +70,7 @@ const Footballer = sequelize.define(
   {
     indexes: [
       {
+        timestamps: false,
         name: 'PRIMARY',
         unique: true,
         using: 'BTREE',
