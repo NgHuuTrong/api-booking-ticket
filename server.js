@@ -52,7 +52,7 @@ Ticket.belongsTo(User, { as: 'U', foreignKey: 'user_id' });
 User.hasMany(Ticket, { as: 'tickets', foreignKey: 'user_id' });
 
 sequelize
-  .sync({ force: true })
+  .sync()
   //.sync()
   .then(() => {
     const port = process.env.PORT || 3000;
