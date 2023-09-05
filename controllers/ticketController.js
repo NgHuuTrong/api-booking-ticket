@@ -1,7 +1,8 @@
 const paypal = require('paypal-rest-sdk');
-const Match = require('../models/match');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const db = require('../utils/database');
+const factory = require('./handleFactory');
 
 paypal.configure({
   mode: 'sandbox', //sandbox or live
@@ -98,3 +99,20 @@ exports.executeCheckout = (req, res) => {
     },
   );
 };
+
+exports.getALlUser = factory.getAll(db.users);
+
+exports.getMatch = factory.getOne(db.matches, [
+  {
+    model: db.clubs,
+    as: 'home_club',
+    foreignKey: 'home_club_id',
+    attributes: ['name', 'stadium_id'],
+  },
+  {
+    model: db.clubs,
+    as: 'away_club',
+    foreignKey: 'away_club_id',
+    attributes: ['name', 'stadium_id'],
+  },
+]);

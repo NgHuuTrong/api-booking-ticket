@@ -3,10 +3,11 @@ const morgan = require('morgan');
 const path = require('path');
 
 const userRouter = require('./routes/userRoutes');
+const ticketRouter = require('./routes/ticketRoutes');
 const stadiumRouter = require('./routes/stadiumRoutes');
-const globalErrorHandler = require('./controllers/errorController');
-
 const ticketController = require('./controllers/ticketController');
+
+const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // ROUTES: import from external files
+app.use('/api/v1/tickets', ticketRouter);
+app.use('/api/v1/users', userRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/stadiums', stadiumRouter);
 app.get('/pay', ticketController.createCheckoutSession);
