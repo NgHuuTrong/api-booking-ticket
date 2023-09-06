@@ -10,6 +10,7 @@ router.post('/login', authController.login);
 router.use(authController.protect);
 
 router.patch('/updateMyPassword', authController.updatePassword);
+
 router.patch(
   '/updateMe',
   userController.uploadUserPhoto,
@@ -17,12 +18,14 @@ router.patch(
   userController.updateMe,
 );
 router.get('/my-tickets', userController.getMyTickets);
+router.get('/my-ticket/:ticket_id', userController.getMyTicketById);
 
-router.delete('/me', userController.getMe, userController.getUser);
+router.get('/me', userController.getMe, userController.getUser);
 
 router.delete('/deleteMe', userController.deleteMe);
 
 router.use(authController.restrictTo('admin'));
+
 router
   .route('/')
   .get(userController.getALlUser)

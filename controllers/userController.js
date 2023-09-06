@@ -139,7 +139,14 @@ exports.getMyTickets = catchAsync(async (req, res, next) => {
       model: db.matches,
       as: 'match',
       foreignKey: 'match_id',
-      attributes: ['home_club_id', 'away_club_id', 'stadium_id', 'time'],
+      attributes: [
+        'home_club_id',
+        'away_club_id',
+        'stadium_id',
+        'time',
+        'happened',
+        'result',
+      ],
       include: [
         {
           model: db.clubs,
@@ -165,6 +172,57 @@ exports.getMyTickets = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    myTickets,
+    my_tickets: myTickets,
+  });
+});
+
+exports.getMyTicketById = catchAsync(async (req, res, next) => {
+  const ticket = await db.tickets.findByPk(req.params.ticket_id, {
+    include: {
+      model: db.matches,
+      as: 'match',
+      foreignKey: 'match_id',
+      attributes: [
+        'home_club_id',
+        'away_club_id',
+        'stadium_id',
+        'time',
+        'happened',
+        'result',
+      ],
+      include: [
+        {
+          model: db.clubs,
+          as: 'home_club',
+          foreignKey: 'home_club_id',
+          attributes: ['name', 'logo'],
+        },
+        {
+          model: db.clubs,
+          as: 'away_club',
+          foreignKey: 'away_club_id',
+          attributes: ['name', 'logo'],
+        },
+        {
+          model: db.stadia,
+          as: 'stadium',
+          foreignKey: 'stadium_id',
+          attributes: ['name', 'capacity', 'location', 'image'],
+        },
+      ],
+    },
+  });
+
+  if (!ticket) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  if (ticket.user_id !== req.user.user_id) {
+    return next(new AppError('You are not logged in to this user', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    ticket,
   });
 });
