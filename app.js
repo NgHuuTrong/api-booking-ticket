@@ -5,7 +5,12 @@ const path = require('path');
 const userRouter = require('./routes/userRoutes');
 const ticketRouter = require('./routes/ticketRoutes');
 const stadiumRouter = require('./routes/stadiumRoutes');
-const ticketController = require('./controllers/ticketController');
+const matchRouter = require('./routes/matchRoutes');
+const groupRouter = require('./routes/groupRoutes');
+const viewRouter = require('./routes/viewRoutes');
+const newsRouter = require('./routes/newsRoutes');
+const clubRouter = require('./routes/clubRoutes');
+const footballerRouter = require('./routes/footballerRoutes');
 
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -25,14 +30,15 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // ROUTES: import from external files
+app.use('/', viewRouter);
 app.use('/api/v1/tickets', ticketRouter);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/stadiums', stadiumRouter);
-app.get('/pay', ticketController.createCheckoutSession);
-app.get('/pay/success', ticketController.executeCheckout);
-app.get('/pay/cancel', (req, res) => res.send('Cancelled'));
-app.get('/', (req, res) => res.render('index'));
+app.use('/api/v1/stadia', stadiumRouter);
+app.use('/api/v1/matches', matchRouter);
+app.use('/api/v1/groups', groupRouter);
+app.use('/api/v1/news', newsRouter);
+app.use('/api/v1/clubs', clubRouter);
+app.use('/api/v1/footballers', footballerRouter);
 
 app.all('*', (req, res, next) => {
   next(new Error(`Can't find ${req.originalUrl} in this server!`));
