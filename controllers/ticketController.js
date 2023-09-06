@@ -100,19 +100,16 @@ exports.executeCheckout = (req, res) => {
   );
 };
 
-exports.getALlUser = factory.getAll(db.users);
+exports.getALlTicket = factory.getAll(db.tickets);
 
-exports.getMatch = factory.getOne(db.matches, [
-  {
-    model: db.clubs,
-    as: 'home_club',
-    foreignKey: 'home_club_id',
-    attributes: ['name', 'stadium_id'],
-  },
-  {
-    model: db.clubs,
-    as: 'away_club',
-    foreignKey: 'away_club_id',
-    attributes: ['name', 'stadium_id'],
-  },
-]);
+exports.getTicket = factory.getOne(db.tickets, {
+  model: db.matches,
+  as: 'match',
+  foreignKey: 'match_id',
+});
+
+exports.createTicket = factory.createOne(db.tickets);
+
+exports.updateTicket = factory.updateOne(db.tickets);
+
+exports.deleteTicket = factory.deleteOne(db.tickets);

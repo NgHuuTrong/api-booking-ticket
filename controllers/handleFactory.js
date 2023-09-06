@@ -5,11 +5,13 @@ exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     // const doc = await Model.findByIdAndDelete(req.params.id);
 
-    const doc = await Model.destroy({ where: { id: req.params.id } });
+    const doc = await Model.findByPk(req.params.id);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
     }
+
+    await doc.destroy();
 
     res.status(204).json({
       status: 'success',
@@ -19,16 +21,14 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    // const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
-    //   new: true,
-    //   runValidators: true,
-    // });
-
-    const doc = await Model.update(req.body, { where: { id: req.params.id } });
+    const doc = await Model.findByPk(req.params.id);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
     }
+
+    await doc.update(req.body);
+    await doc.save();
 
     res.status(200).json({
       status: 'success',
@@ -51,9 +51,7 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model, inclOptions) =>
   catchAsync(async (req, res, next) => {
-    const query = Model.findByPk(req.params.id, { include: inclOptions });
-    // if (inclOptions) query.include(inclOptions);
-    const doc = await query;
+    const doc = await Model.findByPk(req.params.id, { include: inclOptions });
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
@@ -67,9 +65,9 @@ exports.getOne = (Model, inclOptions) =>
     });
   });
 
-exports.getAll = (Model) =>
+exports.getAll = (Model, inclOptions) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findAll();
+    const doc = await Model.findAll({ include: inclOptions });
 
     res.status(200).json({
       status: 'success',

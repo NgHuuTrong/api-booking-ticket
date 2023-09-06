@@ -72,4 +72,16 @@ db.stadia.hasMany(db.matches, { as: 'matches', foreignKey: 'stadium_id' });
 db.tickets.belongsTo(db.users, { as: 'U', foreignKey: 'user_id' });
 db.users.hasMany(db.tickets, { as: 'tickets', foreignKey: 'user_id' });
 
+db.tickets.addHook('beforeCreate', async function (ticket, options) {
+  const match = await db.matches.findByPk(ticket.match_id);
+
+  if (match[`remain_seats_${ticket.area}`] <= 0) {
+    return next(
+      new AppError('This area is full! Please check for the others!', 404),
+    );
+  }
+  match[`remain_seats_${ticket.area}`] -= 1;
+  await match.save();
+});
+
 module.exports = db;

@@ -1,3 +1,5 @@
+const AppError = require('../utils/appError');
+
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const Ticket = sequelize.define(
     'tickets',
@@ -25,8 +27,14 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         },
       },
       area: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.ENUM('north', 'west', 'east', 'south'),
         allowNull: true,
+        validate: {
+          isIn: {
+            args: [['north', 'west', 'east', 'south']],
+            msg: 'Invalid area!',
+          },
+        },
       },
       seat: {
         type: DataTypes.DOUBLE,
@@ -68,6 +76,25 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           fields: [{ name: 'match_id' }],
         },
       ],
+      // hooks: {
+      //   beforeCreate: async function (next) {
+      //     const db = require('../utils/database');
+      //     console.log('hi', this.area);
+      //     const match = await db.matches.findByPk(this.match_id);
+
+      //     if (match[`remain_seats_${this.match_id}`] <= 0) {
+      //       return next(
+      //         new AppError(
+      //           'This area is full! Please check for the others!',
+      //           404,
+      //         ),
+      //       );
+      //     }
+      //     match[`remain_seats_${this.area}`] -= 1;
+      //     await match.save();
+      //     next();
+      //   },
+      // },
     },
   );
   return Ticket;
