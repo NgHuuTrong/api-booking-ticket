@@ -1,3 +1,5 @@
+const bscrypt = require('bcryptjs');
+
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const User = sequelize.define(
     'users',
@@ -39,13 +41,13 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
             args: true,
             msg: 'Please provide password',
           },
-          is: {
-            args: ['^[0-9a-f]{64}$', 'i'],
-            msg: 'Password contains invalid characters',
-          },
+          // is: {
+          //   args: ['^[0-9a-f]{64}$', 'i'],
+          //   msg: 'Password contains invalid characters',
+          // },
           len: {
-            args: [8, 32],
-            msg: 'Password must have in range [8, 32]',
+            min: 8,
+            msg: 'Password must have at least 8 characters',
           },
         },
       },
@@ -56,8 +58,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           notEmpty: {
             args: true,
             msg: 'Please confirm your password',
-          },
-          checkSame() {},
+          }
         },
       },
       change_password_at: {
@@ -94,7 +95,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
     {
       validate: {
         checkPasswordSame() {
-          if (this.password !== this.password_confirm) {
+          if (this.password_confirm && this.password !== this.password_confirm) {
             throw new Error('Passwords are not the same!');
           }
         },
@@ -106,8 +107,26 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           using: 'BTREE',
           fields: [{ name: 'user_id' }],
         },
-      ],
+      ]
     },
   );
+
+  User.prototype.correctPassword = async function (
+    candidatePassword,
+    userPassword
+  ) {
+    return await bscrypt.compare(candidatePassword, userPassword);
+  };
+
+  User.prototype.changedPasswordAfter = function (JWTTimestamp) {
+    if (this.change_password_at) {
+      const changedTimestamp = parseInt(this.change_password_at / 1000, 10);
+      return changedTimestamp > JWTTimestamp;
+    }
+
+    // False means not changed
+    return false;
+  };
+
   return User;
 };

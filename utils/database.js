@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
+const bscrypt = require('bcryptjs');
 
 // const sequelize = new Sequelize(
 //   process.env.DATABASE_NAME,
@@ -11,10 +12,10 @@ const { Sequelize, DataTypes, Op } = require('sequelize');
 //   },
 // );
 
-const sequelize = new Sequelize('football_ticket', 'root', 'Trong123321', {
-  host: 'localhost',
+const sequelize = new Sequelize(process.env.DATABASE_NAME, 'root', process.env.DATABASE_PASSWORD, {
+  host: process.env.DATABASE_HOST,
   dialect: process.env.DATABASE_DIALECT,
-  port: 3306,
+  port: process.env.DATABASE_PORT,
 });
 
 const db = {};
@@ -71,5 +72,21 @@ db.matches.belongsTo(db.stadia, { as: 'stadium', foreignKey: 'stadium_id' });
 db.stadia.hasMany(db.matches, { as: 'matches', foreignKey: 'stadium_id' });
 db.tickets.belongsTo(db.users, { as: 'U', foreignKey: 'user_id' });
 db.users.hasMany(db.tickets, { as: 'tickets', foreignKey: 'user_id' });
+
+db.users.addHook('beforeSave', async (user, options) => {
+  //check if user already exists
+  const checkUser = await db.users.findByPk(user.user_id);
+
+  if (!checkUser) { // user is signing up
+    user.password = await bscrypt.hash(user.password, 12);
+    user.password_confirm = undefined;
+  } else if (
+    !(await user.correctPassword(user.password, checkUser.password)) // user is updating password
+  ) {
+    user.password = await bscrypt.hash(user.password, 12);
+    user.password_confirm = undefined;
+    user.change_password_at = Date.now() - 1000;
+  }
+});
 
 module.exports = db;
