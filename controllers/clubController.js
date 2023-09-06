@@ -4,11 +4,17 @@ const factory = require('./handleFactory');
 
 exports.getALlClub = factory.getAll(db.clubs);
 
-exports.getClub = factory.getOne(db.clubs, {
-  model: db.stadia,
-  as: 'stadium',
-  foreignKey: 'stadium_id',
-});
+exports.getClub = factory.getOne(db.clubs, [
+  {
+    model: db.stadia,
+    as: 'stadium',
+    foreignKey: 'stadium_id',
+  },
+  {
+    model: db.footballers,
+    as: 'footballers',
+  },
+]);
 
 exports.createClub = factory.createOne(db.clubs);
 

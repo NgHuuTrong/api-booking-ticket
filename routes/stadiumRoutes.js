@@ -1,16 +1,29 @@
 const express = require('express');
 const stadiumController = require('../controllers/stadiumController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
 router
   .route('/')
   .get(stadiumController.getALlStadium)
-  .post(stadiumController.createStadium);
+  .post(
+    authController.protect,
+    authController.restrictTo('admin'),
+    stadiumController.createStadium,
+  );
 router
   .route('/:id')
   .get(stadiumController.getStadium)
-  .patch(stadiumController.updateStadium)
-  .delete(stadiumController.deleteStadium);
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin'),
+    stadiumController.updateStadium,
+  )
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin'),
+    stadiumController.deleteStadium,
+  );
 
 module.exports = router;

@@ -24,7 +24,8 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const { name, email, phone, password, password_confirm, gender, address } = req.body;
+  const { name, email, phone, password, password_confirm, gender, address } =
+    req.body;
   if (!email || !password || !name || !password_confirm || !phone || !gender) {
     return next(new AppError('Please fill in all detail!', 400));
   }
@@ -36,7 +37,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     password_confirm,
     phone,
     gender,
-    address
+    address,
   });
 
   createSendToken(newUser, 201, req, res);
@@ -82,7 +83,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new AppError('You are not logged in! Please log in to get access', 401)
+      new AppError('You are not logged in! Please log in to get access', 401),
     );
   }
 
@@ -93,26 +94,40 @@ exports.protect = catchAsync(async (req, res, next) => {
   const currentUser = await db.users.findByPk(decoded.id);
   if (!currentUser) {
     return next(
-      new AppError('This token belonging to the user does no longer exist', 401)
+      new AppError(
+        'This token belonging to the user does no longer exist',
+        401,
+      ),
     );
   }
 
   // 4) Check if the user changed password after the token was issued
   if (currentUser.changedPasswordAfter(decoded.iat)) {
     return next(
-      new AppError('User recently changed password. Please log in again!', 401)
+      new AppError('User recently changed password. Please log in again!', 401),
     );
   }
 
   // GRANT ACCESS to protected routes
-  // req.user = currentUser;
   // res.locals.user = currentUser;
+  req.user = currentUser;
   next();
 });
 
+exports.restrictTo =
+  (...roles) =>
+  (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permission to perform this action', 401),
+      );
+    }
+    next();
+  };
+
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection
-  const user = await db.users.findByPk(+req.params.user_id);
+  const user = await db.users.findByPk(+req.user.user_id);
 
   // 2) Check if POSTed current password is correct
   if (!(await user.correctPassword(req.body.currentPassword, user.password)))
