@@ -1,0 +1,16 @@
+const express = require('express');
+const newsController = require('../controllers/newsController');
+
+const router = express.Router();
+
+router
+  .route('/')
+  .get(newsController.getALlNews)
+  .post(newsController.createNews);
+router
+  .route('/:id')
+  .get(newsController.getNews)
+  .patch(newsController.updateNews)
+  .delete(newsController.deleteNews);
+
+module.exports = router;
