@@ -11,7 +11,8 @@
     "remain_seats_east": 8368,
     "time": "2023-09-01 19:00:00",
     "happened": true,
-    "result": "3-0"
+    "result": "3-0",
+    "round": "Group stage - Matchday 01 - Group A"
   },
   {
     "match_id": 2,
@@ -25,7 +26,8 @@
     "remain_seats_east": 11019,
     "time": "2023-09-01 19:00:00",
     "happened": true,
-    "result": "1-1"
+    "result": "1-1",
+    "round": "Group stage - Matchday 01 - Group A"
   },
   {
     "match_id": 3,
@@ -39,7 +41,8 @@
     "remain_seats_east": 8368,
     "time": "2023-09-03 19:00:00",
     "happened": true,
-    "result": "2-2"
+    "result": "2-2",
+    "round": "Group stage - Matchday 03 - Group A"
   },
   {
     "match_id": 4,
@@ -53,7 +56,8 @@
     "remain_seats_east": 15000,
     "time": "2023-09-03 19:00:00",
     "happened": true,
-    "result": "3-1"
+    "result": "3-1",
+    "round": "Group stage - Matchday 03 - Group A"
   },
   {
     "match_id": 5,
@@ -67,7 +71,8 @@
     "remain_seats_east": 8368,
     "time": "2023-09-05 19:00:00",
     "happened": true,
-    "result": "0-0"
+    "result": "0-0",
+    "round": "Group stage - Matchday 05 - Group A"
   },
   {
     "match_id": 6,
@@ -81,7 +86,8 @@
     "remain_seats_east": 15000,
     "time": "2023-09-05 19:00:00",
     "happened": true,
-    "result": "1-0"
+    "result": "1-0",
+    "round": "Group stage - Matchday 05 - Group A"
   },
   {
     "match_id": 7,
@@ -95,7 +101,8 @@
     "remain_seats_east": 9133,
     "time": "2023-09-01 21:00:00",
     "happened": true,
-    "result": "0-1"
+    "result": "0-1",
+    "round": "Group stage - Matchday 01 - Group B"
   },
   {
     "match_id": 8,
@@ -109,7 +116,8 @@
     "remain_seats_east": 16273,
     "time": "2023-09-01 21:00:00",
     "happened": true,
-    "result": "0-0"
+    "result": "0-0",
+    "round": "Group stage - Matchday 01 - Group B"
   },
   {
     "match_id": 9,
@@ -123,7 +131,8 @@
     "remain_seats_east": 9133,
     "time": "2023-09-03 21:00:00",
     "happened": true,
-    "result": "0-2"
+    "result": "0-2",
+    "round": "Group stage - Matchday 03 - Group B"
   },
   {
     "match_id": 10,
@@ -137,7 +146,8 @@
     "remain_seats_east": 17090,
     "time": "2023-09-03 21:00:00",
     "happened": true,
-    "result": "0-0"
+    "result": "0-0",
+    "round": "Group stage - Matchday 03 - Group B"
   },
   {
     "match_id": 11,
@@ -151,7 +161,8 @@
     "remain_seats_east": 9133,
     "time": "2023-09-05 21:00:00",
     "happened": true,
-    "result": "0-0"
+    "result": "0-0",
+    "round": "Group stage - Matchday 05 - Group B"
   },
   {
     "match_id": 12,
@@ -165,7 +176,8 @@
     "remain_seats_east": 17090,
     "time": "2023-09-05 21:00:00",
     "happened": true,
-    "result": "4-2"
+    "result": "4-2",
+    "round": "Group stage - Matchday 05 - Group B"
   },
   {
     "match_id": 13,
@@ -179,7 +191,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-02 19:00:00",
     "happened": true,
-    "result": "1-3"
+    "result": "1-3",
+    "round": "Group stage - Matchday 02 - Group C"
   },
   {
     "match_id": 14,
@@ -193,7 +206,8 @@
     "remain_seats_east": 11042,
     "time": "2023-09-02 19:00:00",
     "happened": true,
-    "result": "1-0"
+    "result": "1-0",
+    "round": "Group stage - Matchday 02 - Group C"
   },
   {
     "match_id": 15,
@@ -207,7 +221,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-04 19:00:00",
     "happened": true,
-    "result": "0-1"
+    "result": "0-1",
+    "round": "Group stage - Matchday 04 - Group C"
   },
   {
     "match_id": 16,
@@ -221,7 +236,8 @@
     "remain_seats_east": 15242,
     "time": "2023-09-04 19:00:00",
     "happened": true,
-    "result": "1-1"
+    "result": "1-1",
+    "round": "Group stage - Matchday 04 - Group C"
   },
   {
     "match_id": 17,
@@ -235,7 +251,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-06 19:00:00",
     "happened": true,
-    "result": "2-2"
+    "result": "2-2",
+    "round": "Group stage - Matchday 06 - Group C"
   },
   {
     "match_id": 18,
@@ -249,7 +266,8 @@
     "remain_seats_east": 15242,
     "time": "2023-09-06 19:00:00",
     "happened": true,
-    "result": "1-4"
+    "result": "1-4",
+    "round": "Group stage - Matchday 06 - Group C"
   },
   {
     "match_id": 19,
@@ -263,7 +281,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-02 21:00:00",
     "happened": true,
-    "result": "0-2"
+    "result": "0-2",
+    "round": "Group stage - Matchday 02 - Group D"
   },
   {
     "match_id": 20,
@@ -277,7 +296,8 @@
     "remain_seats_east": 9585,
     "time": "2023-09-02 21:00:00",
     "happened": true,
-    "result": "4-1"
+    "result": "4-1",
+    "round": "Group stage - Matchday 02 - Group D"
   },
   {
     "match_id": 21,
@@ -291,7 +311,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-04 21:00:00",
     "happened": true,
-    "result": "2-0"
+    "result": "2-0",
+    "round": "Group stage - Matchday 04 - Group D"
   },
   {
     "match_id": 22,
@@ -305,7 +326,8 @@
     "remain_seats_east": 13691,
     "time": "2023-09-04 21:00:00",
     "happened": true,
-    "result": "2-0"
+    "result": "2-0",
+    "round": "Group stage - Matchday 04 - Group D"
   },
   {
     "match_id": 23,
@@ -319,7 +341,8 @@
     "remain_seats_east": 16003,
     "time": "2023-09-06 21:00:00",
     "happened": true,
-    "result": "2-2"
+    "result": "2-2",
+    "round": "Group stage - Matchday 06 - Group D"
   },
   {
     "match_id": 24,
@@ -333,6 +356,367 @@
     "remain_seats_east": 13691,
     "time": "2023-09-06 21:00:00",
     "happened": true,
-    "result": "1-0"
+    "result": "1-0",
+    "round": "Group stage - Matchday 06 - Group D"
+  },
+  {
+    "match_id": 25,
+    "stadium_id": 700,
+    "home_club_id": 157,
+    "away_club_id": 49,
+    "default_price": 120,
+    "remain_seats_north": 22500,
+    "remain_seats_south": 22500,
+    "remain_seats_west": 15000,
+    "remain_seats_east": 15000,
+    "time": "2023-09-21 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 07 - Group A"
+  },
+  {
+    "match_id": 26,
+    "stadium_id": 19939,
+    "home_club_id": 529,
+    "away_club_id": 50,
+    "default_price": 50,
+    "remain_seats_north": 16777,
+    "remain_seats_south": 16777,
+    "remain_seats_west": 11185,
+    "remain_seats_east": 11185,
+    "time": "2023-09-21 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 07 - Group A"
+  },
+  {
+    "match_id": 27,
+    "stadium_id": 555,
+    "home_club_id": 50,
+    "away_club_id": 49,
+    "default_price": 60,
+    "remain_seats_north": 16529,
+    "remain_seats_south": 16529,
+    "remain_seats_west": 11019,
+    "remain_seats_east": 11019,
+    "time": "2023-09-23 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 09 - Group A"
+  },
+  {
+    "match_id": 28,
+    "stadium_id": 19939,
+    "home_club_id": 529,
+    "away_club_id": 157,
+    "default_price": 110,
+    "remain_seats_north": 16777,
+    "remain_seats_south": 16777,
+    "remain_seats_west": 11185,
+    "remain_seats_east": 11185,
+    "time": "2023-09-23 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 09 - Group A"
+  },
+  {
+    "match_id": 29,
+    "stadium_id": 19939,
+    "home_club_id": 529,
+    "away_club_id": 49,
+    "default_price": 110,
+    "remain_seats_north": 16777,
+    "remain_seats_south": 16777,
+    "remain_seats_west": 11185,
+    "remain_seats_east": 11185,
+    "time": "2023-09-25 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 11 - Group A"
+  },
+  {
+    "match_id": 30,
+    "stadium_id": 555,
+    "home_club_id": 50,
+    "away_club_id": 157,
+    "default_price": 60,
+    "remain_seats_north": 16529,
+    "remain_seats_south": 16529,
+    "remain_seats_west": 11019,
+    "remain_seats_east": 11019,
+    "time": "2023-09-25 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 11 - Group A"
+  },
+  {
+    "match_id": 31,
+    "stadium_id": 1456,
+    "home_club_id": 541,
+    "away_club_id": 496,
+    "default_price": 50,
+    "remain_seats_north": 25636,
+    "remain_seats_south": 25636,
+    "remain_seats_west": 17090,
+    "remain_seats_east": 17090,
+    "time": "2023-09-21 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 07 - Group B"
+  },
+  {
+    "match_id": 32,
+    "stadium_id": 494,
+    "home_club_id": 42,
+    "away_club_id": 165,
+    "default_price": 120,
+    "remain_seats_north": 18114,
+    "remain_seats_south": 18114,
+    "remain_seats_west": 12076,
+    "remain_seats_east": 12076,
+    "time": "2023-09-21 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 07 - Group B"
+  },
+  {
+    "match_id": 33,
+    "stadium_id": 19381,
+    "home_club_id": 165,
+    "away_club_id": 496,
+    "default_price": 130,
+    "remain_seats_north": 24409,
+    "remain_seats_south": 24409,
+    "remain_seats_west": 16273,
+    "remain_seats_east": 16273,
+    "time": "2023-09-23 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 09 - Group B"
+  },
+  {
+    "match_id": 34,
+    "stadium_id": 494,
+    "home_club_id": 42,
+    "away_club_id": 541,
+    "default_price": 110,
+    "remain_seats_north": 18114,
+    "remain_seats_south": 18114,
+    "remain_seats_west": 12076,
+    "remain_seats_east": 12076,
+    "time": "2023-09-23 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 09 - Group B"
+  },
+  {
+    "match_id": 35,
+    "stadium_id": 494,
+    "home_club_id": 42,
+    "away_club_id": 496,
+    "default_price": 100,
+    "remain_seats_north": 18114,
+    "remain_seats_south": 18114,
+    "remain_seats_west": 12076,
+    "remain_seats_east": 12076,
+    "time": "2023-09-25 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 11 - Group B"
+  },
+  {
+    "match_id": 36,
+    "stadium_id": 19381,
+    "home_club_id": 165,
+    "away_club_id": 541,
+    "default_price": 50,
+    "remain_seats_north": 24409,
+    "remain_seats_south": 24409,
+    "remain_seats_west": 16273,
+    "remain_seats_east": 16273,
+    "time": "2023-09-25 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 11 - Group B"
+  },
+  {
+    "match_id": 37,
+    "stadium_id": 556,
+    "home_club_id": 33,
+    "away_club_id": 489,
+    "default_price": 60,
+    "remain_seats_north": 22863,
+    "remain_seats_south": 22863,
+    "remain_seats_west": 15242,
+    "remain_seats_east": 15242,
+    "time": "2023-09-22 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 08 - Group C"
+  },
+  {
+    "match_id": 38,
+    "stadium_id": 11904,
+    "home_club_id": 492,
+    "away_club_id": 40,
+    "default_price": 100,
+    "remain_seats_north": 18072,
+    "remain_seats_south": 18072,
+    "remain_seats_west": 12048,
+    "remain_seats_east": 12048,
+    "time": "2023-09-22 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 08 - Group C"
+  },
+  {
+    "match_id": 39,
+    "stadium_id": 550,
+    "home_club_id": 40,
+    "away_club_id": 489,
+    "default_price": 50,
+    "remain_seats_north": 16563,
+    "remain_seats_south": 16563,
+    "remain_seats_west": 11042,
+    "remain_seats_east": 11042,
+    "time": "2023-09-24 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 10 - Group C"
+  },
+  {
+    "match_id": 40,
+    "stadium_id": 11904,
+    "home_club_id": 492,
+    "away_club_id": 33,
+    "default_price": 80,
+    "remain_seats_north": 18072,
+    "remain_seats_south": 18072,
+    "remain_seats_west": 12048,
+    "remain_seats_east": 12048,
+    "time": "2023-09-24 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 10 - Group C"
+  },
+  {
+    "match_id": 41,
+    "stadium_id": 11904,
+    "home_club_id": 492,
+    "away_club_id": 489,
+    "default_price": 60,
+    "remain_seats_north": 18072,
+    "remain_seats_south": 18072,
+    "remain_seats_west": 12048,
+    "remain_seats_east": 12048,
+    "time": "2023-09-26 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 12 - Group C"
+  },
+  {
+    "match_id": 42,
+    "stadium_id": 550,
+    "home_club_id": 40,
+    "away_club_id": 33,
+    "default_price": 100,
+    "remain_seats_north": 16563,
+    "remain_seats_south": 16563,
+    "remain_seats_west": 11042,
+    "remain_seats_east": 11042,
+    "time": "2023-09-26 19:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 12 - Group C"
+  },
+  {
+    "match_id": 43,
+    "stadium_id": 19217,
+    "home_club_id": 530,
+    "away_club_id": 505,
+    "default_price": 130,
+    "remain_seats_north": 20536,
+    "remain_seats_south": 20536,
+    "remain_seats_west": 13691,
+    "remain_seats_east": 13691,
+    "time": "2023-09-22 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 08 - Group D"
+  },
+  {
+    "match_id": 44,
+    "stadium_id": 593,
+    "home_club_id": 47,
+    "away_club_id": 85,
+    "default_price": 70,
+    "remain_seats_north": 18855,
+    "remain_seats_south": 18855,
+    "remain_seats_west": 12570,
+    "remain_seats_east": 12570,
+    "time": "2023-09-22 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 08 - Group D"
+  },
+  {
+    "match_id": 45,
+    "stadium_id": 671,
+    "home_club_id": 85,
+    "away_club_id": 505,
+    "default_price": 100,
+    "remain_seats_north": 14378,
+    "remain_seats_south": 14378,
+    "remain_seats_west": 9585,
+    "remain_seats_east": 9585,
+    "time": "2023-09-24 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 10 - Group D"
+  },
+  {
+    "match_id": 46,
+    "stadium_id": 593,
+    "home_club_id": 47,
+    "away_club_id": 530,
+    "default_price": 70,
+    "remain_seats_north": 18855,
+    "remain_seats_south": 18855,
+    "remain_seats_west": 12570,
+    "remain_seats_east": 12570,
+    "time": "2023-09-24 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 10 - Group D"
+  },
+  {
+    "match_id": 47,
+    "stadium_id": 593,
+    "home_club_id": 47,
+    "away_club_id": 505,
+    "default_price": 90,
+    "remain_seats_north": 18855,
+    "remain_seats_south": 18855,
+    "remain_seats_west": 12570,
+    "remain_seats_east": 12570,
+    "time": "2023-09-26 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 12 - Group D"
+  },
+  {
+    "match_id": 48,
+    "stadium_id": 671,
+    "home_club_id": 85,
+    "away_club_id": 530,
+    "default_price": 70,
+    "remain_seats_north": 14378,
+    "remain_seats_south": 14378,
+    "remain_seats_west": 9585,
+    "remain_seats_east": 9585,
+    "time": "2023-09-26 21:00:00",
+    "happened": false,
+    "result": null,
+    "round": "Group stage - Matchday 12 - Group D"
   }
 ]

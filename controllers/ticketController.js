@@ -12,7 +12,10 @@ paypal.configure({
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   // 1) Get Currently booked tour
-  // const match = await Match.findById(req.params.match_id);
+  const match = await db.matches.findByPk(req.params.match_id);
+  if (match.happened) {
+    return next(new AppError('This match has been happened!'));
+  }
 
   // 2) Create checkout session
   const create_payment_json = {

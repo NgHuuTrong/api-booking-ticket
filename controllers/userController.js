@@ -207,7 +207,7 @@ exports.getMyTicketById = catchAsync(async (req, res, next) => {
           model: db.stadia,
           as: 'stadium',
           foreignKey: 'stadium_id',
-          attributes: ['name', 'capacity', 'location', 'image'],
+          attributes: ['name', 'capacity', 'location', 'image', 'address'],
         },
       ],
     },

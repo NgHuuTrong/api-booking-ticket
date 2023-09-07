@@ -50,7 +50,7 @@ db.news = require('../models/news.js')(sequelize, Sequelize, DataTypes);
 db.footballers.belongsTo(db.clubs, { as: 'club', foreignKey: 'club_id' });
 db.clubs.hasMany(db.footballers, { as: 'footballers', foreignKey: 'club_id' });
 db.groupClubs.belongsTo(db.clubs, { as: 'club', foreignKey: 'club_id' });
-db.clubs.hasOne(db.groupClubs, {
+db.clubs.hasMany(db.groupClubs, {
   as: 'group_club',
   foreignKey: 'club_id',
 });

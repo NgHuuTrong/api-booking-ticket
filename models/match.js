@@ -65,6 +65,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: true,
       },
+      round: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       timestamps: false,

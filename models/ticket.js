@@ -1,4 +1,5 @@
 const AppError = require('../utils/appError');
+const qrcode = require('qrcode');
 
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const Ticket = sequelize.define(
@@ -45,11 +46,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         allowNull: true,
       },
       code: {
-        type: DataTypes.STRING(20),
-        allowNull: true,
-      },
-      order_time: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING(2000),
         allowNull: true,
       },
       expired: {
@@ -76,25 +73,16 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           fields: [{ name: 'match_id' }],
         },
       ],
-      // hooks: {
-      //   beforeCreate: async function (next) {
-      //     const db = require('../utils/database');
-      //     console.log('hi', this.area);
-      //     const match = await db.matches.findByPk(this.match_id);
-
-      //     if (match[`remain_seats_${this.match_id}`] <= 0) {
-      //       return next(
-      //         new AppError(
-      //           'This area is full! Please check for the others!',
-      //           404,
-      //         ),
-      //       );
-      //     }
-      //     match[`remain_seats_${this.area}`] -= 1;
-      //     await match.save();
-      //     next();
-      //   },
-      // },
+      hooks: {
+        beforeCreate: async function (ticket) {
+          let qr = await qrcode.toDataURL(
+            `${ticket.user_id}-${ticket.match_id}-${ticket.area}-${ticket.seat}`,
+          );
+          // ticket.code = qr;
+          console.log(qr);
+          ticket.code = qr;
+        },
+      },
     },
   );
   return Ticket;

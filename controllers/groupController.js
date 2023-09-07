@@ -3,11 +3,11 @@ const factory = require('./handleFactory');
 
 exports.getALlGroup = factory.getAll(db.groups, {
   model: db.groupClubs,
-  as: 'clubs',
+  as: 'group_clubs',
   foreignKey: 'group_id',
   include: {
     model: db.clubs,
-    as: 'details',
+    as: 'club',
     foreignKey: 'club_id',
     attributes: ['name', 'logo'],
   },
