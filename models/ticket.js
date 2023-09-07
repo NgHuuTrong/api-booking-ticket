@@ -46,7 +46,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         allowNull: true,
       },
       code: {
-        type: DataTypes.STRING(2000),
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       expired: {
@@ -75,11 +75,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       ],
       hooks: {
         beforeCreate: async function (ticket) {
-          let qr = await qrcode.toDataURL(
+          const qr = await qrcode.toDataURL(
             `${ticket.user_id}-${ticket.match_id}-${ticket.area}-${ticket.seat}`,
           );
-          // ticket.code = qr;
-          console.log(qr);
+
           ticket.code = qr;
         },
       },
