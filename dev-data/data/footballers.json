@@ -252,7 +252,7 @@
     "captain": false,
     "position": "Attacker",
     "height": "170 cm",
-    "weight": "\n    "
+    "weight": null
   },
   {
     "footballer_id": 153399,
@@ -267,7 +267,7 @@
     "captain": false,
     "position": "Midfielder",
     "height": "166 cm",
-    "weight": "\n    "
+    "weight": null
   },
   {
     "footballer_id": 167658,
@@ -806,8 +806,8 @@
     "photo": "https://media-2.api-sports.io/football/players/138411.png",
     "captain": false,
     "position": "Goalkeeper",
-    "height": "\n    ",
-    "weight": "\n    "
+    "height": null,
+    "weight": null
   },
   {
     "footballer_id": 151754,
@@ -1167,7 +1167,7 @@
     "captain": false,
     "position": "Defender",
     "height": "175 cm",
-    "weight": "\n    "
+    "weight": null
   },
   {
     "footballer_id": 138823,
@@ -2351,8 +2351,8 @@
     "photo": "https://media-3.api-sports.io/football/players/162532.png",
     "captain": false,
     "position": "Goalkeeper",
-    "height": "\n    ",
-    "weight": "\n    "
+    "height": null,
+    "weight": null
   },
   {
     "footballer_id": 163080,
@@ -4039,8 +4039,8 @@
     "club_id": 505,
     "name": "A. Pelamatti",
     "nationality": "Russia",
-    "height": "\n    ",
-    "weight": "\n    ",
+    "height": null,
+    "weight": null,
     "injured": false,
     "photo": "https://media-1.api-sports.io/football/players/336708.png",
     "birthdate": "2004-10-09",
@@ -4129,8 +4129,8 @@
     "club_id": 505,
     "name": "N. Biral",
     "nationality": "Italy",
-    "height": "\n    ",
-    "weight": "\n    ",
+    "height": null,
+    "weight": null,
     "injured": false,
     "photo": "https://media-3.api-sports.io/football/players/386868.png",
     "birthdate": "2004-01-01",
@@ -4609,8 +4609,8 @@
     "club_id": 489,
     "name": "G. Robotti",
     "nationality": "Italy",
-    "height": "\n    ",
-    "weight": "\n    ",
+    "height": null,
+    "weight": null,
     "injured": false,
     "photo": "https://media-2.api-sports.io/football/players/325143.png",
     "birthdate": "2002-01-30",
@@ -4684,8 +4684,8 @@
     "club_id": 489,
     "name": "Youns Gabriele El Hilali",
     "nationality": "Italy",
-    "height": "\n    ",
-    "weight": "\n    ",
+    "height": null,
+    "weight": null,
     "injured": false,
     "photo": "https://media-2.api-sports.io/football/players/336689.png",
     "birthdate": "2003-06-08",
