@@ -5,6 +5,7 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/:id/line-up', clubController.getClubLineUp);
+router.get('/:club_id/matches', clubController.getMatchesOfClub);
 
 router
   .route('/')

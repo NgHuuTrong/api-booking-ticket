@@ -39,11 +39,23 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       },
       seat: {
         type: DataTypes.DOUBLE,
-        allowNull: true,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Please provide seat!',
+          },
+        },
       },
       price: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Please provide price!',
+          },
+        },
       },
       code: {
         type: DataTypes.TEXT,
@@ -51,6 +63,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       },
       expired: {
         type: DataTypes.BOOLEAN,
+        allowNull: true,
+      },
+      payment_id: {
+        type: DataTypes.STRING,
         allowNull: true,
       },
     },
@@ -78,7 +94,6 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           const qr = await qrcode.toDataURL(
             `${ticket.user_id}-${ticket.match_id}-${ticket.area}-${ticket.seat}`,
           );
-
           ticket.code = qr;
         },
       },
