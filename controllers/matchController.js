@@ -27,6 +27,11 @@ exports.getMatch = factory.getOne(db.matches, [
     as: 'away_club',
     foreignKey: 'away_club_id',
   },
+  {
+    model: db.stadia,
+    as: 'stadium',
+    foreignKey: 'stadium_id',
+  },
 ]);
 
 exports.createMatch = factory.createOne(db.matches);
