@@ -20,7 +20,7 @@ db.sequelize
     );
     const matches = JSON.parse(fs.readFileSync(`${__dirname}/match.json`));
     const users = JSON.parse(fs.readFileSync(`${__dirname}/user.json`));
-    // const groups = JSON.parse(fs.readFileSync(`${__dirname}/group.json`));
+    const tickets = JSON.parse(fs.readFileSync(`${__dirname}/tickets.json`));
 
     const news = JSON.parse(fs.readFileSync(`${__dirname}/news.json`));
 
@@ -33,8 +33,11 @@ db.sequelize
         await db.groupClubs.bulkCreate(groupClub);
         await db.matches.bulkCreate(matches);
         await db.users.bulkCreate(users);
-
         await db.news.bulkCreate(news);
+
+        for (let i = 0; i < tickets.length; i++) {
+          await db.tickets.create(tickets[i]);
+        }
         console.log('Data imported successfully');
       } catch (err) {
         console.log(err);
