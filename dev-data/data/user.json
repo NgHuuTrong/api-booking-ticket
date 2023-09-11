@@ -12,7 +12,7 @@
   {
     "name": "Lourdes Browning",
     "email": "loulou@example.com",
-    "role": "user",
+    "role": "admin",
     "active": true,
     "photo": null,
     "password": "$2a$12$hP1h2pnNp7wgyZNRwPsOTeZuNzWBv7vHmsR3DT/OaPSUBQT.y0S..",
