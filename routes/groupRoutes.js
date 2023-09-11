@@ -4,6 +4,8 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+router.get('/:group_id/matches', groupController.getMatchesOfGroup);
+
 router
   .route('/')
   .get(groupController.getALlGroup)
