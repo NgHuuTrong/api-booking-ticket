@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
 const bscrypt = require('bcryptjs');
+const AppError = require('../utils/appError');
+const qrcode = require('qrcode');
 
 // const sequelize = new Sequelize(
 //   process.env.DATABASE_NAME,
@@ -86,8 +88,14 @@ db.tickets.addHook('beforeCreate', async function (ticket, options) {
       new AppError('This area is full! Please check for the others!', 404),
     );
   }
+  ticket.seat = match[`remain_seats_${ticket.area}`];
   match[`remain_seats_${ticket.area}`] -= 1;
   await match.save();
+
+  const qr = await qrcode.toDataURL(
+    `${ticket.payer_name}-${ticket.payer_email}-${ticket.payer_phone}-${ticket.match_id}-${ticket.area}-${ticket.seat}`,
+  );
+  ticket.code = qr;
 });
 
 db.users.addHook('beforeSave', async (user, options) => {

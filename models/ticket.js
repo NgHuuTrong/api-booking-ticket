@@ -1,6 +1,3 @@
-const AppError = require('../utils/appError');
-const qrcode = require('qrcode');
-
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const Ticket = sequelize.define(
     'tickets',
@@ -17,6 +14,36 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         references: {
           model: 'users',
           key: 'user_id',
+        },
+      },
+      payer_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Please provide payer name!',
+          },
+        },
+      },
+      payer_email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Please provide payer email!',
+          },
+        },
+      },
+      payer_phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: 'Please provide payer phone!',
+          },
         },
       },
       match_id: {
@@ -38,14 +65,8 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         },
       },
       seat: {
-        type: DataTypes.DOUBLE,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            args: true,
-            msg: 'Please provide seat!',
-          },
-        },
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       price: {
         type: DataTypes.FLOAT,
@@ -89,14 +110,6 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           fields: [{ name: 'match_id' }],
         },
       ],
-      hooks: {
-        beforeCreate: async function (ticket) {
-          const qr = await qrcode.toDataURL(
-            `${ticket.user_id}-${ticket.match_id}-${ticket.area}-${ticket.seat}`,
-          );
-          ticket.code = qr;
-        },
-      },
     },
   );
   return Ticket;

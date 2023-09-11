@@ -12,20 +12,22 @@ paypal.configure({
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   // 1) Get Currently booked tour
-  const {match_id, payer_name, payer_email, payer_phone, area, quantity} = req.body;
-
-  if (!match_id || !payer_name || !payer_email || !payer_phone || !area || !quantity) {
-    return next(new AppError('Lack of details!'))
-  }
+  const { match_id, payer_name, payer_email, payer_phone, area, quantity } =
+    req.params;
   const match = await db.matches.findByPk(match_id);
   if (match.happened) {
     return next(new AppError('This match has been happened!'));
   }
   if (!match.default_price) {
-    return next(new AppError('The price is not released for this match!'))
+    return next(new AppError('The price is not released for this match!'));
+  }
+  if (quantity < 1) {
+    return next(new AppError('Quantity must higher than 1!'));
   }
   if (match[`remain_seats_${area}`] < quantity) {
-    return next(new AppError('This area has been full! Please choose another area!'))
+    return next(
+      new AppError('This area has been full! Please choose another area!'),
+    );
   }
 
   const price = match.default_price * quantity;
@@ -36,7 +38,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     payer: {
       payment_method: 'paypal',
       payer_info: {
-        email: payer_email,
+        email: 'test@personal.natours.io',
       },
     },
     redirect_urls: {
@@ -44,7 +46,19 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
       //   req.params.tourId
       // }&user=${req.user.id}&price=${tour.price}&startDateId=${startDateId}`,
       // cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
-      return_url: `${req.protocol}://${req.get('host')}/pay/success/?user=${req.user.user_id}&price=${match.default_price}&quantity=${quantity}&match=${match_id}`,
+
+      // return_url: `${req.protocol}://${req.get('host')}/pay/success/?user=${
+      //   req.user.user_id
+      // }&price=${
+      //   match.default_price
+      // }&quantity=${quantity}&match=${match_id}&area=${area}&payerEmail=${payer_email}&payerName=${payer_name}&payerPhone=${payer_phone}`,
+
+      return_url: `${req.protocol}://${req.get('host')}/pay/execute/?user=${
+        req.user.user_id
+      }&match=${match_id}`,
+
+      // return_url: `${req.protocol}://${req.get('host')}/pay/success`,
+
       cancel_url: `${req.protocol}://${req.get('host')}/pay/cancel`,
     },
     transactions: [
@@ -55,7 +69,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
               name: match.round,
               sku: match.match_id,
               description: `This is a ticket of Champion League match, will happen in ${match.time}.`,
-              price: match.default_price * 100,
+              price: match.default_price,
               currency: 'USD',
               quantity: quantity,
             },
@@ -63,9 +77,9 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
         },
         amount: {
           currency: 'USD',
-          total: price * 100,
+          total: price,
         },
-        description: `Payment for booking Champion League ticket!`,
+        description: `${payer_name}%-%${payer_email}%-%${payer_phone}%-%${quantity}%-%${area}%-%${match.default_price}`,
       },
     ],
   };
@@ -74,7 +88,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     JSON.stringify(create_payment_json),
     function (error, payment) {
       if (error) {
-        return new AppError(err.message);
+        return new AppError(error.response.details);
       }
       for (let i = 0; i < payment.links.length; i++) {
         if (payment.links[i].rel === 'approval_url') {
@@ -85,10 +99,10 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   );
 });
 
-exports.executeCheckout = (req, res) => {
-  const { PayerID, paymentId, price, match, user, quantity } = req.query;
+exports.executeCheckout = catchAsync(async (req, res, next) => {
+  const { PayerID, paymentId, match, user } = req.query;
 
-  if (!PayerID || !paymentId || !price || !match || !user || !quantity)
+  if (!PayerID || !paymentId || !match || !user)
     return next(new AppError('Invalid Payment', 404));
 
   const execute_payment_json = {
@@ -98,15 +112,32 @@ exports.executeCheckout = (req, res) => {
   paypal.payment.execute(
     paymentId,
     execute_payment_json,
-    function (error, payment) {
+    async function (error, payment) {
       if (error) {
-        return next(new AppError(err.message));
+        return next(new AppError(error.message));
       } else {
-        // res.render('success')
-        res.render('success');
+        const [payerName, payerEmail, payerPhone, quantity, area, price] =
+          payment.transactions[0].description.split('%-%');
+        for (let i = 0; i < Number(quantity); i++) {
+          await db.tickets.create({
+            user_id: Number(user),
+            match_id: Number(match),
+            area,
+            payer_email: payerEmail,
+            payer_name: payerName,
+            payer_phone: payerPhone,
+            payment_id: paymentId,
+            price: Number(price),
+          });
+        }
+        res.redirect(`${req.protocol}://${req.get('host')}/pay/success`);
       }
     },
   );
+});
+
+exports.getPaySuccess = (req, res) => {
+  res.render('success');
 };
 
 exports.getALlTicket = factory.getAll(db.tickets);
