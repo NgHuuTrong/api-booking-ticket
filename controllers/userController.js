@@ -69,12 +69,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       ),
     );
 
-  // Convert buffer
-  const imageFile = dataUri.format(
-    path.extname(req.file.filename).toString(),
-    req.file.buffer,
-  );
-
   // 2) Filtered out unwanted fields names that are not allowed to be updated
   const filteredBody = filteredObj(
     req.body,
@@ -84,16 +78,35 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     'phone',
     'address',
   );
-  if (req.file) filteredBody.photo = imageFile.content;
+  if (req.file) {
+    // Convert buffer
+    const imageFile = dataUri.format(
+      path.extname(req.file.filename).toString(),
+      req.file.buffer,
+    );
+    filteredBody.photo = imageFile.content;
 
-  cloudinary.v2.uploader.upload(filteredBody.photo, async (error, result) => {
-    filteredBody.photo = result.secure_url;
+    cloudinary.v2.uploader.upload(filteredBody.photo, async (error, result) => {
+      filteredBody.photo = result.secure_url;
 
+      // 3) Update user document
+      const updateUser = await db.users.update(filteredBody, {
+        where: { user_id: req.user.user_id },
+        validate: true,
+      });
+      res.status(200).json({
+        status: 'success',
+        data: {
+          updateUser,
+        },
+      });
+    });
+  } else {
     // 3) Update user document
-    const updateUser = await db.users.findByPk(req.user.id);
-
-    await updateUser.update(filteredBody);
-    await updateUser.save();
+    const updateUser = await db.users.update(filteredBody, {
+      where: { user_id: req.user.user_id },
+      validate: true,
+    });
 
     res.status(200).json({
       status: 'success',
@@ -101,7 +114,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
         updateUser,
       },
     });
-  });
+  }
 });
 
 exports.getMe = (req, res, next) => {

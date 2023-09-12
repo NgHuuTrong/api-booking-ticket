@@ -26,11 +26,14 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING(100),
         allowNull: false,
-        unique: true,
         validate: {
           isEmail: {
             msg: 'Must be an EMAIL ##CUSTOM MESSAGE##',
           },
+        },
+        unique: {
+          args: true,
+          msg: 'Email address already in use!',
         },
       },
       password: {
@@ -58,7 +61,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           notEmpty: {
             args: true,
             msg: 'Please confirm your password',
-          }
+          },
         },
       },
       change_password_at: {
@@ -95,7 +98,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
     {
       validate: {
         checkPasswordSame() {
-          if (this.password_confirm && this.password !== this.password_confirm) {
+          if (
+            this.password_confirm &&
+            this.password !== this.password_confirm
+          ) {
             throw new Error('Passwords are not the same!');
           }
         },
@@ -107,13 +113,13 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           using: 'BTREE',
           fields: [{ name: 'user_id' }],
         },
-      ]
+      ],
     },
   );
 
   User.prototype.correctPassword = async function (
     candidatePassword,
-    userPassword
+    userPassword,
   ) {
     return await bscrypt.compare(candidatePassword, userPassword);
   };
