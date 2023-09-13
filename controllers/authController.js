@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const db = require('../utils/database');
+const { Op } = require('sequelize');
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -116,14 +117,14 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo =
   (...roles) =>
-  (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError('You do not have permission to perform this action', 401),
-      );
-    }
-    next();
-  };
+    (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+        return next(
+          new AppError('You do not have permission to perform this action', 401),
+        );
+      }
+      next();
+    };
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection
@@ -139,5 +140,67 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   // 4) Log user in, send JWT
+  createSendToken(user, 200, req, res);
+});
+
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  // get user based on email
+  if (!req.body.email) {
+    return next(new AppError('Please provide your email!', 404));
+  }
+
+  const user = await db.users.findOne({
+    where: {
+      email: req.body.email
+    }
+  });
+  if (!user) {
+    return next(new AppError('There is no user with your email address', 404));
+  }
+
+  // generate reset token
+  const resetToken = user.createPasswordResetToken();
+  await user.save();
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Token sent to email!',
+    resetToken
+  });
+
+  // send reset token to user's email
+  //.....
+});
+
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  // get user based on reset token
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(req.body.token)
+    .digest('hex');
+
+  const user = await db.users.findOne({
+    where: {
+      passwordResetToken: hashedToken,
+      passwordResetExpires: {
+        [Op.gt]: Date.now()
+      }
+    }
+  });
+
+  // check if the token is invalid or has expired
+  if (!user) {
+    return next(new AppError('Token is invalid or has expired', 400));
+  }
+
+  // update changedPasswordAt property for user
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = null;
+  user.passwordResetExpires = null;
+
+  await user.save();
+
+  // log the user in, send JWT
   createSendToken(user, 200, req, res);
 });

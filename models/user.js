@@ -1,4 +1,5 @@
 const bscrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -133,6 +134,19 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
     // False means not changed
     return false;
   };
+
+  User.prototype.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex');
+
+    this.passwordResetToken = crypto
+      .createHash('sha256')
+      .update(resetToken)
+      .digest('hex');
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes to reset password
+
+    return resetToken;
+  }
 
   return User;
 };
