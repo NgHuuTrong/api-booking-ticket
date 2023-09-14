@@ -1,11 +1,12 @@
 const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
+const { Op } = require('sequelize');
 
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const db = require('../utils/database');
-const { Op } = require('sequelize');
+const Email = require('../utils/email');
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -41,6 +42,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     address,
   });
 
+  await new Email(newUser, '').sendWelcome();
   createSendToken(newUser, 201, req, res);
 });
 
@@ -117,14 +119,14 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo =
   (...roles) =>
-    (req, res, next) => {
-      if (!roles.includes(req.user.role)) {
-        return next(
-          new AppError('You do not have permission to perform this action', 401),
-        );
-      }
-      next();
-    };
+  (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permission to perform this action', 401),
+      );
+    }
+    next();
+  };
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection
@@ -151,8 +153,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   const user = await db.users.findOne({
     where: {
-      email: req.body.email
-    }
+      email: req.body.email,
+    },
   });
   if (!user) {
     return next(new AppError('There is no user with your email address', 404));
@@ -165,7 +167,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     message: 'Token sent to email!',
-    resetToken
+    resetToken,
   });
 
   // send reset token to user's email
@@ -183,9 +185,9 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     where: {
       passwordResetToken: hashedToken,
       passwordResetExpires: {
-        [Op.gt]: Date.now()
-      }
-    }
+        [Op.gt]: Date.now(),
+      },
+    },
   });
 
   // check if the token is invalid or has expired
