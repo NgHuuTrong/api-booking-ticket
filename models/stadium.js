@@ -28,6 +28,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         type: DataTypes.STRING(100),
         allowNull: true,
       },
+      coordinates: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
+      },
     },
     {
       timestamps: false,

@@ -42,17 +42,6 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
       },
     },
     redirect_urls: {
-      // return_url: `${req.protocol}://${req.get('host')}/?tour=${
-      //   req.params.tourId
-      // }&user=${req.user.id}&price=${tour.price}&startDateId=${startDateId}`,
-      // cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
-
-      // return_url: `${req.protocol}://${req.get('host')}/pay/success/?user=${
-      //   req.user.user_id
-      // }&price=${
-      //   match.default_price
-      // }&quantity=${quantity}&match=${match_id}&area=${area}&payerEmail=${payer_email}&payerName=${payer_name}&payerPhone=${payer_phone}`,
-
       return_url: `${req.protocol}://${req.get('host')}/pay/execute/?user=${
         req.user.user_id
       }&match=${match_id}`,

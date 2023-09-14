@@ -5,7 +5,8 @@
     "address": "Queensland Road",
     "capacity": 60383,
     "location": "London",
-    "image": "https://media-2.api-sports.io/football/venues/494.png"
+    "image": "https://media-2.api-sports.io/football/venues/494.png",
+    "coordinates": "51.555211287288834, -0.10840820325544993"
   },
   {
     "stadium_id": 555,
@@ -13,7 +14,8 @@
     "address": "Rowsley Street",
     "capacity": 55097,
     "location": "Manchester",
-    "image": "https://media.api-sports.io/football/venues/555.png"
+    "image": "https://media.api-sports.io/football/venues/555.png",
+    "coordinates": "53.483239983744895, -2.200384331969663"
   },
   {
     "stadium_id": 550,
@@ -21,7 +23,8 @@
     "address": "Anfield Road",
     "capacity": 55212,
     "location": "Liverpool",
-    "image": "https://media-2.api-sports.io/football/venues/550.png"
+    "image": "https://media-2.api-sports.io/football/venues/550.png",
+    "coordinates": "53.43096111537958, -2.960693385946785"
   },
   {
     "stadium_id": 519,
@@ -29,7 +32,8 @@
     "address": "Fulham Road",
     "capacity": 41841,
     "location": "London",
-    "image": "https://media-1.api-sports.io/football/venues/519.png"
+    "image": "https://media-1.api-sports.io/football/venues/519.png",
+    "coordinates": "51.48180328402444, -0.19094577442447747"
   },
   {
     "stadium_id": 1456,
@@ -37,7 +41,8 @@
     "address": "Avenida de Concha Espina 1, Chamartín",
     "capacity": 85454,
     "location": "Madrid",
-    "image": "https://media-3.api-sports.io/football/venues/1456.png"
+    "image": "https://media-3.api-sports.io/football/venues/1456.png",
+    "coordinates": "40.45322644269602, -3.6883873480586375"
   },
   {
     "stadium_id": 19939,
@@ -45,7 +50,8 @@
     "address": "Carrer de l&apos;Estadi",
     "capacity": 55926,
     "location": "Barcelona",
-    "image": "https://media-1.api-sports.io/football/venues/19939.png"
+    "image": "https://media-1.api-sports.io/football/venues/19939.png",
+    "coordinates": "41.36492521907923, 2.155734769178426"
   },
   {
     "stadium_id": 700,
@@ -53,7 +59,8 @@
     "address": "Werner-Heisenberg-Allee 25",
     "capacity": 75000,
     "location": "München",
-    "image": "https://media-3.api-sports.io/football/venues/700.png"
+    "image": "https://media-3.api-sports.io/football/venues/700.png",
+    "coordinates": "48.21890429854192, 11.624743783049636"
   },
   {
     "stadium_id": 671,
@@ -61,7 +68,8 @@
     "address": "24, rue du Commandant Guilbaud",
     "capacity": 47929,
     "location": "Paris",
-    "image": "https://media-2.api-sports.io/football/venues/671.png"
+    "image": "https://media-2.api-sports.io/football/venues/671.png",
+    "coordinates": "48.8415485493075, 2.2530483965798274"
   },
   {
     "stadium_id": 909,
@@ -69,7 +77,8 @@
     "address": "Strada Comunale di Altessano 131",
     "capacity": 45666,
     "location": "Torino",
-    "image": "https://media-2.api-sports.io/football/venues/909.png"
+    "image": "https://media-2.api-sports.io/football/venues/909.png",
+    "coordinates": "45.10968089345333, 7.641256238694493"
   },
   {
     "stadium_id": 556,
@@ -77,7 +86,8 @@
     "address": "Sir Matt Busby Way",
     "capacity": 76212,
     "location": "Manchester",
-    "image": "https://media.api-sports.io/football/venues/556.png"
+    "image": "https://media.api-sports.io/football/venues/556.png",
+    "coordinates": "53.463237716778025, -2.291361560806463"
   },
   {
     "stadium_id": 907,
@@ -85,7 +95,8 @@
     "address": "Via Piccolomini 5",
     "capacity": 80018,
     "location": "Milano",
-    "image": "https://media-1.api-sports.io/football/venues/907.png"
+    "image": "https://media-1.api-sports.io/football/venues/907.png",
+    "coordinates": "45.47826874245061, 9.12406036939916"
   },
   {
     "stadium_id": 19217,
@@ -93,7 +104,8 @@
     "address": "Rosas",
     "capacity": 68456,
     "location": "Madrid",
-    "image": "https://media-2.api-sports.io/football/venues/19217.png"
+    "image": "https://media-2.api-sports.io/football/venues/19217.png",
+    "coordinates": "40.43641192365596, -3.599449717375348"
   },
   {
     "stadium_id": 19381,
@@ -101,7 +113,8 @@
     "address": "Strobelalle 50",
     "capacity": 81365,
     "location": "Dortmund",
-    "image": "https://media-3.api-sports.io/football/venues/19381.png"
+    "image": "https://media-3.api-sports.io/football/venues/19381.png",
+    "coordinates": "51.49269565078271, 7.451857396740668"
   },
   {
     "stadium_id": 593,
@@ -109,7 +122,8 @@
     "address": "Bill Nicholson Way, 748 High Road",
     "capacity": 62850,
     "location": "London",
-    "image": "https://media-1.api-sports.io/football/venues/593.png"
+    "image": "https://media-1.api-sports.io/football/venues/593.png",
+    "coordinates": "51.60436040666113, -0.06623383208791955"
   },
   {
     "stadium_id": 11904,
@@ -117,6 +131,7 @@
     "address": "Pizzale Vincenzo Tecchio",
     "capacity": 60240,
     "location": "Napoli",
-    "image": "https://media-2.api-sports.io/football/venues/11904.png"
+    "image": "https://media-2.api-sports.io/football/venues/11904.png",
+    "coordinates": "40.82811507278578, 14.193071824973424"
   }
 ]
