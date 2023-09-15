@@ -3,9 +3,9 @@ const ejs = require('ejs');
 const htmlToText = require('html-to-text');
 
 module.exports = class Email {
-  constructor(user, url) {
+  constructor(user, message) {
     this.to = user.email;
-    this.url = url;
+    this.message = message;
     this.name = user.name;
     this.from = `Nguyen Huu Trong ${process.env.EMAIL_FROM}`;
   }
@@ -41,7 +41,7 @@ module.exports = class Email {
       `${__dirname}/../views/email/${template}.ejs`,
       {
         name: this.name,
-        url: this.url,
+        message: this.message,
         subject: this.subject,
       },
     );
@@ -65,7 +65,7 @@ module.exports = class Email {
 
   async sendPasswordReset() {
     await this.send(
-      'passwordReset',
+      'resetPassword',
       'Your password reset token (valid for only 10min)',
     );
   }
