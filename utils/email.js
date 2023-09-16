@@ -35,7 +35,6 @@ module.exports = class Email {
 
   // Send the actual email
   async send(template, subject) {
-    console.log(`${__dirname}/../views/email/${template}.ejs`);
     // 1. Render HTML based on a ejs template
     const html = await ejs.renderFile(
       `${__dirname}/../views/email/${template}.ejs`,

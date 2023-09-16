@@ -1,1 +1,2 @@
-views/email/
+views/email/baseHeader.ejs
+views/email/baseFooter.ejs

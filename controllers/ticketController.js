@@ -3,6 +3,7 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const db = require('../utils/database');
 const factory = require('./handleFactory');
+const Email = require('../utils/email');
 
 paypal.configure({
   mode: 'sandbox', //sandbox or live
@@ -119,6 +120,11 @@ exports.executeCheckout = catchAsync(async (req, res, next) => {
             price: Number(price),
           });
         }
+        await new Email(
+          { name: payerName, email: payerEmail },
+          `Name: ${payerName}---Email: ${payerEmail}---Phone: ${payerPhone}---Area: ${area}---Quantity: ${quantity}`,
+        ).sendBookingSuccess();
+
         res.redirect(`${req.protocol}://${req.get('host')}/pay/success`);
       }
     },
